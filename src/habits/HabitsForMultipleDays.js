@@ -1,34 +1,47 @@
 import React from "react";
-import HabitsService from "./HabitsService";
+import HabitsService from "../HabitsService";
+import {Card} from "./Card";
 
 
 export default class HabitsForMultipleDays extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            values: [],
-            startDate: "2021-10-01",
-            endDate: "2021-10-11"
+            data: ["s"],
+            startDate: "2021-12-01",
+            endDate: "2021-12-30",
+            date: new Date().toISOString().split('T')[0]
         }
     }
 
 
     componentDidMount() {
         this.getValues();
-        this.getStats();
+    }
+
+    getCard(e) {
+        return <Card name={e.habit} value={e.data.value}/>
+    }
+
+    slice(array) {
+        const num = 4;
+        let new_array = [];
+        for (let i = 0; i < array.length; i += num) {
+            new_array.push(array.slice(i, i + num))
+        }
+        return new_array;
     }
 
     getValues = () => {
         HabitsService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => {
-            console.log(e);
-            this.setState({values: e});
+            this.parseData(e)
+            this.setState({data: e});
         })
     }
 
-    getStats = () => {
-        HabitsService.getStatisticsForAllHabits(this.state.startDate, this.state.endDate).then(e => {
+    synchronize = () => {
+        HabitsService.putDataFromSheetToMongo().then(e => {
             console.log(e);
-            this.setState({stats: e});
         })
     }
 
@@ -52,16 +65,14 @@ export default class HabitsForMultipleDays extends React.Component {
         }
     }
 
-    handleNewDates = () => {
-        this.getValues();
-        this.getStats();
+    parseData(data) {
+        let keys = Object.keys(data);
+        console.log(keys);
+        keys.map(e => console.log(data[e][1]['value']))
     }
 
-    getHabitElement(e) {
-        console.log(e)
-        return <div>
-            {e.map(d => <span style={this.getColor(d.value)}>{d.value} </span>)}
-        </div>
+    handleNewDates = () => {
+        this.getValues();
     }
 
     render() {
@@ -71,13 +82,7 @@ export default class HabitsForMultipleDays extends React.Component {
             <input type="date" value={this.state.endDate}
                    onChange={this.handleChangeEndDate}/>
             <button onClick={this.handleNewDates}>Update</button>
-            <h1>{this.state.date}</h1>
-            {Object.keys(this.state.values).map(e => <div>
-                <h3>{e}</h3>
-                {this.getHabitElement(this.state.values[e])}
-                    <p>{this.state.stats[e]}</p>
-            </div>
-            )}
+
         </div>
     }
 }

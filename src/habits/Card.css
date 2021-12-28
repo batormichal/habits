@@ -1,0 +1,42 @@
+.rectangle {
+    height: 25%;
+    width: 20%;
+    color:white;
+    background-color: rgb(77,77,77);
+    border-radius:7px;
+    text-align:center;
+    vertical-align:middle;
+    justify-content:center;
+    align-items: center;
+    float: left;
+    margin-left: 1%;
+    margin-bottom: 1%;
+}
+
+.result-v{
+    background-color: green;
+}
+
+.result--{
+    background-color: grey;
+}
+
+.result-x{
+    background-color: darkred;
+}
+
+.result-slash{
+    background-color: mediumpurple;
+}
+
+.result-part{
+    background-color: orange;
+}
+
+.result-empty{
+    background-color: lightblue;
+}
+
+.value{
+    font-size: 50px;
+}
