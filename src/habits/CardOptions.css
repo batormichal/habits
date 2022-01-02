@@ -1,0 +1,8 @@
+.options .option-button {
+    width: 25%;
+    background-color: #460A1F;
+    border-color: #460A1F;
+    font-weight: bold;
+    border-radius: 0;
+    font-family: Roboto, serif;
+}

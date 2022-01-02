@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffe6a5;
 }
 
 code {
@@ -14,8 +15,17 @@ code {
 
 html, body{
   height: 100%;
+  background-color: #ffe6a5;
 }
 
 #root{
   height: 100%;
+}
+
+tr{
+  height: 6vh;
+}
+
+td, th{
+  vertical-align: middle;
 }

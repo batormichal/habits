@@ -5,25 +5,25 @@ import {Link} from 'react-router-dom';
 export default class Menu extends React.Component {
     render() {
         return (
-            <nav className="Nav">
-                <div className="Nav__container">
-                    <div className="Nav__right">
-                        <ul className="Nav__item-wrapper">
-                            <li className="Nav__item">
-                                <Link className="Nav__link" to="path1">Link
-                                    1</Link>
-                            </li>
-                            <li className="Nav__item">
-                                <Link className="Nav__link" to="/path2">Link
-                                    2</Link>
-                            </li>
-                            <li className="Nav__item">
-                                <Link className="Nav__link" to="/path3">Link
-                                    3</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="path1">Nawyki</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/path2">Tabela
+                            nawyków</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/path3">Dodaj
+                            książkę</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/path4">Tabela
+                            czytania</Link>
+                    </li>
+                </ul>
+
             </nav>
         );
     }

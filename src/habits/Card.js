@@ -23,7 +23,7 @@ function getClassStyle(value) {
 
 export const Card = (props) => {
     return <div className={"rectangle " + getClassStyle(props.value)}>
-        <p>{props.name}</p>
+        <p className="flex">{props.name}</p>
         <p className="value">{props.value || "~"}</p>
         <CardOptions
             setValue={(p) => props.setValue(props.name, props.date, p)}/>

@@ -3,15 +3,17 @@ import React from "react";
 import HabitsForDay from "./habits/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HabitsForMultipleDays from "./habits/HabitsForMultipleDays";
-import AddReadDataForm from "./read-data/AddReadDataForm";
+import {AddReadDataForm} from "./read-data/AddReadDataForm";
 import ReadDateTable from "./read-data/ReadDateTable";
+import Menu from "./Menu";
 
 
 function App() {
     return (
-        <div className="app container">
+        <div className="app">
             <BrowserRouter>
-                <Routes>
+                <Menu/>
+                <div className="container"><Routes>
                     <Route element={<HabitsForDay/>}
                            path="path1"/>
                     <Route element={<HabitsForMultipleDays/>}
@@ -19,8 +21,8 @@ function App() {
                     <Route element={<AddReadDataForm/>}
                            path="path3"/>
                     <Route element={<ReadDateTable/>}
-                           path="/"/>
-                </Routes>
+                           path="path4"/>
+                </Routes></div>
             </BrowserRouter>
         </div>
     );

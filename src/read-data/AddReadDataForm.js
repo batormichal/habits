@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {Field, Form, Formik} from 'formik';
 import HabitsService from "../HabitsService";
+import {useLocation} from "react-router";
 
 
-export default function AddReadDataForm() {
+export const AddReadDataForm = () => {
     const [status, setStatus] = useState("")
+    const location = useLocation();
+    console.log(location)
     return <div>
         <h1>Add reading data</h1>
         <Formik
@@ -12,6 +15,7 @@ export default function AddReadDataForm() {
                 title: '',
                 pagesRead: '',
                 nextPage: '',
+                date: new Date().toISOString().split('T')[0]
             }}
             onSubmit={values => HabitsService.addReadingData(values)
                 .then(() => setStatus({success: true})
