@@ -78,7 +78,7 @@ export default class HabitsForDay extends React.Component {
             </div>
             {
                 this.slice(this.state.data).map(slice =>
-                    <div className="d-flex justify-content-center"
+                    <div key={slice[1]['habit']} className="d-flex justify-content-center"
                     >{slice.map(e =>
                         <Card key={e.habit} setValue={this.setValue}
                               name={e.habit} value={e.data.value}

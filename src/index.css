@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffe6a5;
+  background-color: #FFF0AA;
 }
 
 code {
@@ -15,7 +15,7 @@ code {
 
 html, body{
   height: 100%;
-  background-color: #ffe6a5;
+  background-color: #FFF0AA;
 }
 
 #root{

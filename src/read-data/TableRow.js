@@ -14,6 +14,7 @@ export default function TableRow({e}) {
             <td>{e['type']}</td>
             <td>{e['pages']}</td>
             <td>{e['next_page']}</td>
+            <td>{e['title'] && Math.round(e['pages_calculated'])}</td>
             <td>
                 {e['title'] !== undefined &&
                     <button className="btn btn-secondary btn-sm"

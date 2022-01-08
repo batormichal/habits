@@ -15,7 +15,8 @@ export const AddReadDataForm = () => {
                 title: '',
                 pagesRead: '',
                 nextPage: '',
-                date: new Date().toISOString().split('T')[0]
+                date: new Date().toISOString().split('T')[0],
+                type: ''
             }}
             onSubmit={values => HabitsService.addReadingData(values)
                 .then(() => setStatus({success: true})
@@ -23,7 +24,8 @@ export const AddReadDataForm = () => {
             <Form>
                 <div className="form-group">
                     <label htmlFor="title">Tytuł</label>
-                    <Field className="form-control form-control-lg" id="title"
+                    <Field onChange={e => console.log(e.target.value)}
+                           className="form-control form-control-lg" id="title"
                            name="title" placeholder="Tytuł"/>
                 </div>
                 <div className="form-group col-2">
@@ -45,9 +47,12 @@ export const AddReadDataForm = () => {
                 </div>
                 <div className="form-group col-2">
                     <label htmlFor="type">Typ</label>
-                    <Field className="form-control" id="type"
+                    <Field as="select" className="form-control" id="type"
                            name="type"
-                    />
+                    >
+                        <option value="Paper">Paper</option>
+                        <option value="Ebook">Ebook</option>
+                    </Field>
                 </div>
                 <button type="submit">Submit</button>
             </Form>

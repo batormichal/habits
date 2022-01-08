@@ -23,8 +23,8 @@ export default class HabitsService {
         });
     }
 
-    static getStatisticsForAllHabits(startDate, endDate) {
-        return axios.get('http://localhost:5000/habit-stats/' + startDate + "/" + endDate).then((response) => {
+    static getStatisticsForAllHabits() {
+        return axios.get('http://localhost:5000/habit-stats').then((response) => {
             console.log(response)
             return response.data;
         });
@@ -57,6 +57,13 @@ export default class HabitsService {
 
     static getReadingData() {
         return axios.get('http://localhost:5000/read-data').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+    static getHabitsStreak() {
+        return axios.get('http://localhost:5000/habit-stats/streak').then((response) => {
             console.log(response)
             return response.data;
         });

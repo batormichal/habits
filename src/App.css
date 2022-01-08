@@ -1,9 +1,10 @@
 .app {
     height: 100%;
-    background-color: #ffe6a5;
+    background-color: #FFF0AA;
 }
 
 .headbar {
     position: fixed;
     top: 0;
 }
+

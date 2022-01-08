@@ -22,6 +22,10 @@ export default class Menu extends React.Component {
                         <Link className="nav-link" to="/path4">Tabela
                             czytania</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/path5">Statystyki
+                            nawyków</Link>
+                    </li>
                 </ul>
 
             </nav>

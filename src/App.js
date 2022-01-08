@@ -6,6 +6,7 @@ import HabitsForMultipleDays from "./habits/HabitsForMultipleDays";
 import {AddReadDataForm} from "./read-data/AddReadDataForm";
 import ReadDateTable from "./read-data/ReadDateTable";
 import Menu from "./Menu";
+import HabitsStatistics from "./habits/HabitsStatistics";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
                            path="path3"/>
                     <Route element={<ReadDateTable/>}
                            path="path4"/>
+                    <Route element={<HabitsStatistics/>}
+                           path="path5"/>
                 </Routes></div>
             </BrowserRouter>
         </div>

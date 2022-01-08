@@ -1,0 +1,17 @@
+.habits-stats-table{
+    width: 100%;
+}
+
+.habits-stats-table thead{
+    border-color: black;
+    border-bottom-width: medium;
+}
+
+tr{
+    min-height: 5vh;
+    max-height: 5vh;
+}
+
+tr td:first-child{
+    font-weight: bold;
+}

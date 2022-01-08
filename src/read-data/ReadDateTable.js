@@ -33,6 +33,7 @@ export default class ReadDateTable extends React.Component {
                 <th>Typ</th>
                 <th>Strony</th>
                 <th>Następna</th>
+                <th>Obliczone</th>
             </tr>
             </thead>
             <tbody>
