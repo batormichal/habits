@@ -1,24 +1,34 @@
 import React, {useState} from 'react';
 import {Field, Form, Formik} from 'formik';
-import HabitsService from "../HabitsService";
-import {useLocation} from "react-router";
+import RESTService from "../RESTService";
 
 
-export const AddReadDataForm = () => {
-    const [status, setStatus] = useState("")
-    const location = useLocation();
-    console.log(location)
+export const AddReadDataForm = (props) => {
+    const [status, setStatus] = useState(false)
+    let values;
+    if (props.book !== undefined) {
+        values = {
+            id: props.book._id,
+            title: props.book.title,
+            pagesRead: props.book.pages,
+            nextPage: props.book.next_page,
+            date: props.book.date.split(" ")[0],
+            type: props.book.type
+        }
+    } else {
+        values = {
+            title: '',
+            pagesRead: '',
+            nextPage: '',
+            date: new Date().toISOString().split('T')[0],
+            type: ''
+        }
+    }
     return <div>
         <h1>Add reading data</h1>
         <Formik
-            initialValues={{
-                title: '',
-                pagesRead: '',
-                nextPage: '',
-                date: new Date().toISOString().split('T')[0],
-                type: ''
-            }}
-            onSubmit={values => HabitsService.addReadingData(values)
+            initialValues={values}
+            onSubmit={values => RESTService.addReadingData(values)
                 .then(() => setStatus({success: true})
                 )}>
             <Form>
@@ -29,14 +39,14 @@ export const AddReadDataForm = () => {
                            name="title" placeholder="Tytuł"/>
                 </div>
                 <div className="form-group col-2">
-                    <label htmlFor="pagesRead">Strony</label>
-                    <Field type="number" className="form-control" id="pagesRead"
-                           name="pagesRead"/>
+                    <label htmlFor="pages">Strony</label>
+                    <Field type="number" className="form-control" id="pages"
+                           name="pages"/>
                 </div>
                 <div className="form-group col-2">
-                    <label htmlFor="nextPage">Dokąd</label>
-                    <Field type="number" className="form-control" id="nextPage"
-                           name="nextPage"
+                    <label htmlFor="next_page">Dokąd</label>
+                    <Field type="number" className="form-control" id="next_page"
+                           name="next_page"
                     />
                 </div>
                 <div className="form-group col-2">

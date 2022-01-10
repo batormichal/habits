@@ -1,6 +1,7 @@
 import React from 'react';
-import HabitsService from "../HabitsService";
+import RESTService from "../RESTService";
 import TableRow from "./TableRow";
+import './ReadDataTable.css'
 
 
 export default class ReadDateTable extends React.Component {
@@ -18,7 +19,7 @@ export default class ReadDateTable extends React.Component {
     }
 
     example = () => {
-        HabitsService.getReadingData().then(e => {
+        RESTService.getReadingData().then(e => {
             this.setState({data: e})
         });
 

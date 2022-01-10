@@ -3,10 +3,12 @@ import React from "react";
 import HabitsForDay from "./habits/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HabitsForMultipleDays from "./habits/HabitsForMultipleDays";
-import {AddReadDataForm} from "./read-data/AddReadDataForm";
-import ReadDateTable from "./read-data/ReadDateTable";
+import {AddReadDataForm} from "./books/AddReadDataForm";
+import ReadDateTable from "./books/ReadDateTable";
 import Menu from "./Menu";
 import HabitsStatistics from "./habits/HabitsStatistics";
+import {AddExerciseForm} from "./exercises/AddExerciseForm";
+import {ActivitiesMenu} from "./activities/ActivitiesMenu";
 
 
 function App() {
@@ -16,15 +18,19 @@ function App() {
                 <Menu/>
                 <div className="container"><Routes>
                     <Route element={<HabitsForDay/>}
-                           path="path1"/>
+                           exact path="habits/day"/>
                     <Route element={<HabitsForMultipleDays/>}
-                           path="path2"/>
-                    <Route element={<AddReadDataForm/>}
-                           path="path3"/>
-                    <Route element={<ReadDateTable/>}
-                           path="path4"/>
+                           path="habits/table"/>
                     <Route element={<HabitsStatistics/>}
-                           path="path5"/>
+                           path="habits/stats"/>
+                    <Route element={<AddReadDataForm/>}
+                           path="books/reading/add"/>
+                    <Route element={<ReadDateTable/>}
+                           path="books/reading/table"/>
+                    <Route element={<AddExerciseForm/>}
+                           path="exercises/add"/>
+                    <Route element={<ActivitiesMenu/>}
+                           path="activities/menu"/>
                 </Routes></div>
             </BrowserRouter>
         </div>

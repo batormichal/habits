@@ -1,5 +1,5 @@
 import React from "react";
-import HabitsService from "../HabitsService";
+import RESTService from "../RESTService";
 import {Card} from "./Card";
 import moment from "moment";
 
@@ -19,7 +19,7 @@ export default class HabitsForDay extends React.Component {
     }
 
     updateData = () => {
-        HabitsService.getDataForDay(this.state.date).then(e => {
+        RESTService.getDataForDay(this.state.date).then(e => {
             this.setState({data: e});
         })
     }
@@ -35,7 +35,7 @@ export default class HabitsForDay extends React.Component {
     }
 
     synchronize = () => {
-        HabitsService.putDataFromSheetToMongo().then(e => {
+        RESTService.putDataFromSheetToMongo().then(e => {
             console.log(e);
             this.updateData();
         })
@@ -51,7 +51,7 @@ export default class HabitsForDay extends React.Component {
     }
 
     setValue = (name, date, new_value) => {
-        HabitsService.setValueForHabitAndDate(name, date, new_value)
+        RESTService.setValueForHabitAndDate(name, date, new_value)
             .then(e => {
                 console.log(e);
                 this.updateData()

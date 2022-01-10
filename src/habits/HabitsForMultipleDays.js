@@ -1,5 +1,5 @@
 import React from "react";
-import HabitsService from "../HabitsService";
+import RESTService from "../RESTService";
 import {Card} from "./Card";
 import moment from "moment";
 import "./HabitsForMultipleDays.css"
@@ -34,10 +34,10 @@ export default class HabitsForMultipleDays extends React.Component {
     }
 
     getValues = () => {
-        HabitsService.getHabitsStreak().then(e => {
+        RESTService.getHabitsStreak().then(e => {
             this.setState({streaks: e, load: true});
         })
-        HabitsService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => {
+        RESTService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => {
             this.setState({data: e});
         })
     }

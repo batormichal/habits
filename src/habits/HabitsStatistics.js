@@ -1,5 +1,5 @@
 import React from "react";
-import HabitsService from "../HabitsService";
+import RESTService from "../RESTService";
 import "./HabitsStatistics.css"
 
 
@@ -15,7 +15,7 @@ export default class HabitsStatistics extends React.Component {
     }
 
     componentDidMount() {
-        HabitsService.getStatisticsForAllHabits().then(e => {
+        RESTService.getStatisticsForAllHabits().then(e => {
             this.setState({
                 data: e,
                 habits: Object.keys(e),

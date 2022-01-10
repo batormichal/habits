@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import {useState} from "react";
 import {AddReadDataForm} from "./AddReadDataForm";
+import './ReadDataTable.css'
 
 
 export default function TableRow({e}) {
@@ -17,12 +18,12 @@ export default function TableRow({e}) {
             <td>{e['title'] && Math.round(e['pages_calculated'])}</td>
             <td>
                 {e['title'] !== undefined &&
-                    <button className="btn btn-secondary btn-sm"
+                    <button className="btn btn-secondary btn-sm book-button"
                             onClick={() => setEdit({status: !edit.status})}>Edit
                     </button>
                 }
             </td>
         </tr>
-        {edit.status && <tr><th colSpan="4"><AddReadDataForm/></th></tr>}
+        {edit.status && <tr><th colSpan="4"><AddReadDataForm book={e}/></th></tr>}
     </React.Fragment>
 }

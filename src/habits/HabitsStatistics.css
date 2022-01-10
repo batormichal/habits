@@ -7,11 +7,6 @@
     border-bottom-width: medium;
 }
 
-tr{
-    min-height: 5vh;
-    max-height: 5vh;
-}
-
 tr td:first-child{
     font-weight: bold;
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export default class HabitsService {
+export default class RESTService {
     static getAllHabits() {
         return axios.get('http://localhost:5000/habit-names').then((response) => {
             console.log(response)
@@ -64,6 +64,13 @@ export default class HabitsService {
 
     static getHabitsStreak() {
         return axios.get('http://localhost:5000/habit-stats/streak').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+    static addExercise(values) {
+        return axios.post('http://localhost:8080/exercise', values).then((response) => {
             console.log(response)
             return response.data;
         });

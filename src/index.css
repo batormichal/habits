@@ -22,10 +22,6 @@ html, body{
   height: 100%;
 }
 
-tr{
-  height: 6vh;
-}
-
 td, th{
   vertical-align: middle;
 }
