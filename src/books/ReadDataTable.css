@@ -1,14 +1,3 @@
-tr{
-    height: 3vh;
-}
-.book-button.btn-sm{
-    padding-top: 0;
-    padding-bottom: 0;
-}
 
-.table tr > th {
-    padding: 0;
-}
-.table tr > td {
-    padding: 0;
-}
+/*tr { display: block; float: left; }*/
+/*th, td { display: block; }*/

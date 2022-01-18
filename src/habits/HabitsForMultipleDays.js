@@ -64,9 +64,20 @@ export default class HabitsForMultipleDays extends React.Component {
                 <h1
                     key={e}
                     className="display-3 stat-item date-item">{this.state.streaks[e]}</h1>)
-            }</div>
+            }
+            <div
+                className="display-3 stat-item date-item"/>
+        </div>
         tab.push(head);
         for (let i = Object.entries(data["Warzywa"]).length - 1; i >= 0; i--) {
+            let result = 0;
+            Object.keys(data).forEach(e => {
+                if (Object.entries(data[e])[i][1]['value'] === 'v') {
+                    result++;
+                }if (Object.entries(data[e])[i][1]['value'] === '-') {
+                    result += 0.5;
+                }
+            });
             let date = Object.entries(data[Object.keys(data)[0]])[i][1]['date']
             let el = <div key={"ttt---" + i}
                           className="flex-habits">
@@ -81,7 +92,10 @@ export default class HabitsForMultipleDays extends React.Component {
                           }}
                           value={Object.entries(data[e])[i][1]['value']}/>
                 )
-                }</div>
+                }
+                <h1
+                    className="display-3 stat-item date-item">{result}</h1>
+            </div>
             tab.push(el);
         }
         return <div className="wrapper">{tab}</div>;

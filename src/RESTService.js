@@ -75,4 +75,11 @@ export default class RESTService {
             return response.data;
         });
     }
+
+    static getExercises() {
+        return axios.get('http://localhost:8080/exercise').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
 }

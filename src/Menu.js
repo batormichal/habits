@@ -32,6 +32,10 @@ export default class Menu extends React.Component {
                             ćwiczenie</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link" to="/exercises/table">Tabela
+                            ćwiczeń</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link"
                               to="/activities/menu">Aktywności</Link>
                     </li>
