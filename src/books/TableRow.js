@@ -24,6 +24,6 @@ export default function TableRow({e}) {
                 }
             </td>
         </tr>
-        {edit.status && <tr><th colSpan="4"><AddReadDataForm book={e}/></th></tr>}
+        {edit.status && <tr><th colSpan="6"><AddReadDataForm book={e}/></th></tr>}
     </React.Fragment>
 }

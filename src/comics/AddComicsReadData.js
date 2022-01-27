@@ -1,36 +1,18 @@
-import React, {useState} from 'react';
-import {Field, Form, Formik} from 'formik';
+import React, {useState} from "react";
 import RESTService from "../RESTService";
+import {Field, Form, Formik} from "formik";
 
 
-export const AddReadDataForm = (props) => {
-    const [status, setStatus] = useState({success: false})
-    let values;
-    if (props.book !== undefined) {
-        values = {
-            id: props.book._id,
-            title: props.book.title,
-            pagesRead: props.book.pages,
-            nextPage: props.book.next_page,
-            date: props.book.date.split(" ")[0],
-            type: props.book.type
-        }
-    } else {
-        values = {
-            title: '',
-            pagesRead: '',
-            nextPage: '',
-            date: new Date().toISOString().split('T')[0],
-            type: ''
-        }
+export function AddComicsReadData() {
+    const [status, setStatus] = useState({success: false});
+    const values = {
+        id: '', date: '', publication: '', story: ''
     }
-    return <div>
-        <h1>Add reading data</h1>
+    return <div className="set-read input-group">
         <Formik
             initialValues={values}
             onSubmit={values => RESTService.addReadingData(values)
-                .then(() => setStatus({success: true})
-                )}>
+                .then(() => setStatus({success: true}))}>
             <Form>
                 <div className="form-group">
                     <label htmlFor="title">Tytuł</label>
@@ -38,24 +20,24 @@ export const AddReadDataForm = (props) => {
                            className="form-control form-control-lg" id="title"
                            name="title" placeholder="Tytuł"/>
                 </div>
-                <div className="form-group col-2">
+                <div className="form-group">
                     <label htmlFor="pages">Strony</label>
                     <Field type="number" className="form-control" id="pages"
                            name="pages"/>
                 </div>
-                <div className="form-group col-2">
+                <div className="form-group">
                     <label htmlFor="next_page">Dokąd</label>
                     <Field type="number" className="form-control" id="next_page"
                            name="next_page"
                     />
                 </div>
-                <div className="form-group col-2">
+                <div className="form-group">
                     <label htmlFor="date">Data</label>
                     <Field type="date" className="form-control" id="date"
                            name="date"
                     />
                 </div>
-                <div className="form-group col-2">
+                <div className="form-group">
                     <label htmlFor="type">Typ</label>
                     <Field as="select" className="form-control" id="type"
                            name="type"

@@ -9,9 +9,9 @@ export const GenericTable = (props) => {
         </tr>
         </thead>
         <tbody>
-        {props.data.map(exercise =>
-            <tr>
-                {props.keys.map(key => <td>{exercise[key]}</td>)}
+        {props.data.map((exercise, index) =>
+            <tr key={exercise[props.keys[0]]+index}>
+                {props.keys.map(key => <td key={key}>{exercise[key]}</td>)}
             </tr>
         )}
         </tbody>

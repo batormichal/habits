@@ -1,0 +1,14 @@
+.activity-selector{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+
+.activity-selector > button{
+    width: 50vh;
+    padding: 1vh;
+    background-color: lightblue;
+    font-size: 5vh;
+    font-weight: bold;
+}

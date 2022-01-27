@@ -82,4 +82,11 @@ export default class RESTService {
             return response.data;
         });
     }
+
+    static getComicsPublishing() {
+        return axios.get('http://localhost:8080/test').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
 }

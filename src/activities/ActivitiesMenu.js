@@ -1,20 +1,24 @@
 import {GenericTable} from "../exercises/GenericTable";
+import React from "react";
 import {useState} from "react";
+import './ActivitiesMenu.css'
 
 
 export const ActivitiesMenu = () => {
     const [show, setShow] = useState({component: "stress"});
 
-    return <div>
-        <button onClick={() => setShow({component: "stress"})}
-                className="btn">Przełamanie
-        </button>
-        <button onClick={() => setShow({component: "outgoing"})}
-                className="btn">Wyjścia
-        </button>
-        <button onClick={() => setShow({component: "learning"})}
-                className="btn">Nauka
-        </button>
+    return <React.Fragment>
+        <div className="activity-selector">
+            <button onClick={() => setShow({component: "stress"})}
+                    className="btn">Przełamanie
+            </button>
+            <button onClick={() => setShow({component: "outgoing"})}
+                    className="btn">Wyjścia
+            </button>
+            <button onClick={() => setShow({component: "learning"})}
+                    className="btn">Nauka
+            </button>
+        </div>
         {show.component === 'stress' &&
             <GenericTable data={[]} headers={["TEST", "2"]}
                           keys={["d", "s"]}/>}
@@ -24,5 +28,5 @@ export const ActivitiesMenu = () => {
         {show.component === 'learning' &&
             <GenericTable data={[]} headers={["d", "Learning"]}
                           keys={["d", "s"]}/>}
-    </div>
+    </React.Fragment>
 }

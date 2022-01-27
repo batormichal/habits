@@ -1,15 +1,15 @@
 .app {
     height: 100%;
-    background-color: #FFF0AA;
+    /*background-color: #FFF0AA;*/
 }
 
-.headbar {
+.head-bar {
     position: fixed;
     top: 0;
 }
 
 .table tr{
-    height: 3vh;
+    height: 4vh;
 }
 .book-button.btn-sm{
     padding-top: 0;

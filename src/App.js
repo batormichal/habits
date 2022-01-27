@@ -10,6 +10,7 @@ import HabitsStatistics from "./habits/HabitsStatistics";
 import {AddExerciseForm} from "./exercises/AddExerciseForm";
 import {ActivitiesMenu} from "./activities/ActivitiesMenu";
 import ExercisesTable from "./exercises/ExercisesTable";
+import Publishing from "./comics/Publishing";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
                            path="activities/menu"/>
                     <Route element={<ExercisesTable/>}
                            path="exercises/table"/>
+                    <Route element={<Publishing/>}
+                           path="comics/table"/>
                 </Routes></div>
             </BrowserRouter>
         </div>
