@@ -22,27 +22,35 @@ export default class ReadDateTable extends React.Component {
         RESTService.getReadingData().then(e => {
             this.setState({data: e})
         });
+    }
 
+    resetWithSheetData = () => {
+        RESTService.resetBooksWithSheetData().then(() => {
+            this.example();
+        });
     }
 
     render() {
-        return <table className="table table-striped">
-            <thead>
-            <tr>
-                <th>Data</th>
-                <th>Tytuł</th>
-                <th>Typ</th>
-                <th>Strony</th>
-                <th>Następna</th>
-                <th>Obliczone</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-                this.getBooksList()
-            }
-            </tbody>
-        </table>
+        return this.state.data.length !== 0 && <div>
+            <button onClick={this.resetWithSheetData}>HARD RESET</button>
+            <table className="table book-table table-striped">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tytuł</th>
+                    <th>Typ</th>
+                    <th>Strony</th>
+                    <th>Następna</th>
+                    <th>Obliczone</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    this.getBooksList()
+                }
+                </tbody>
+            </table>
+        </div>
     }
 
     getBooksList() {
@@ -58,7 +66,7 @@ export default class ReadDateTable extends React.Component {
                     if (i < this.state.data.length) {
                         e = this.state.data[i];
                         e_date = new Date(e['date'].slice(0, e['date'].indexOf(" ")))
-                    }else break;
+                    } else break;
                 }
             } else {
                 let a = {'date': date.toISOString()}

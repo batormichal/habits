@@ -9,8 +9,10 @@ import Menu from "./Menu";
 import HabitsStatistics from "./habits/HabitsStatistics";
 import {AddExerciseForm} from "./exercises/AddExerciseForm";
 import {ActivitiesMenu} from "./activities/ActivitiesMenu";
+import ActivitiesForm from "./activities/ActivitiesForm";
 import ExercisesTable from "./exercises/ExercisesTable";
-import Publishing from "./comics/Publishing";
+import Series from "./comics/Series";
+import PublicationTable from "./comics/PublicationTable";
 
 
 function App() {
@@ -33,10 +35,14 @@ function App() {
                            path="exercises/add"/>
                     <Route element={<ActivitiesMenu/>}
                            path="activities/menu"/>
+                    <Route element={<ActivitiesForm/>}
+                           path="activities/form"/>
                     <Route element={<ExercisesTable/>}
                            path="exercises/table"/>
-                    <Route element={<Publishing/>}
+                    <Route element={<Series/>}
                            path="comics/table"/>
+                    <Route element={<PublicationTable/>}
+                           path="comics/publication/:id"/>
                 </Routes></div>
             </BrowserRouter>
         </div>

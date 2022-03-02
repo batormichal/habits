@@ -1,8 +1,8 @@
 import React from "react";
 import RESTService from "../RESTService";
-import {Card} from "./Card";
 import moment from "moment";
 import "./HabitsForMultipleDays.css"
+import {CardTable} from "./CardTable";
 
 
 export default class HabitsForMultipleDays extends React.Component {
@@ -39,6 +39,7 @@ export default class HabitsForMultipleDays extends React.Component {
         })
         RESTService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => {
             this.setState({data: e});
+            console.log(e);
         })
     }
 
@@ -60,43 +61,62 @@ export default class HabitsForMultipleDays extends React.Component {
         let head = <div key="streaks" className="flex-habits">
             <div
                 className="display-3 stat-item date-item"/>
-            {Object.keys(data).map(e =>
-                <h1
-                    key={e}
-                    className="display-3 stat-item date-item">{this.state.streaks[e]}</h1>)
-            }
+            {Object.keys(data).map(e => <h1
+                key={e}
+                className="display-3 stat-item date-item">{this.state.streaks[e]}</h1>)}
             <div
                 className="display-3 stat-item date-item"/>
         </div>
+        let names = <div key="streaks" className="flex-habits">
+            <p
+                className="stat-item date-item"/>
+            {Object.keys(data).map(e => <p
+                key={e}
+                className="stat-item date-item">{e}</p>)}
+            <p
+                className="stat-item date-item"/>
+        </div>
+        tab.push(names);
         tab.push(head);
-        for (let i = Object.entries(data["Warzywa"]).length - 1; i >= 0; i--) {
+        let date = new Date();
+        for (let i = Object.entries(data["Budzik"]).length - 1; i >= 0; i--) {
             let result = 0;
             Object.keys(data).forEach(e => {
-                if (Object.entries(data[e])[i][1]['value'] === 'v') {
-                    result++;
-                }if (Object.entries(data[e])[i][1]['value'] === '-') {
-                    result += 0.5;
+                if (Object.entries(data[e])[i] != null) {
+                    if (Object.entries(data[e])[i][1]['value'] === 'v') {
+                        result++;
+                    }
+                    if (Object.entries(data[e])[i][1]['value'] === '-') {
+                        result += 0.5;
+                    }
                 }
             });
-            let date = Object.entries(data[Object.keys(data)[0]])[i][1]['date']
+            result = Math.floor(result);
             let el = <div key={"ttt---" + i}
                           className="flex-habits">
                 <div
                     className="date-item">{moment(date).format('ddd, D MMMM')}</div>
-                {Object.keys(data).map(e =>
-                    <Card name={e}
-                          edit={this.state.edit}
-                          key={e + "-" + i}
-                          setValue={function () {
-                              console.log("WYSŁANO xd");
-                          }}
-                          value={Object.entries(data[e])[i][1]['value']}/>
-                )
-                }
+                {Object.keys(data).map(e => {
+                    let habitValue;
+                    if (Object.entries(data[e])[i] == null) {
+                        habitValue = ''
+                    } else {
+                        habitValue = Object.entries(data[e])[i][1]['value'];
+                    }
+                    return <CardTable name={e}
+                                      maximal={false}
+                                      edit={this.state.edit}
+                                      key={e + "-" + i}
+                                      setValue={function () {
+                                          console.log("WYSŁANO xd");
+                                      }}
+                                      value={habitValue}/>
+                })}
                 <h1
                     className="display-3 stat-item date-item">{result}</h1>
             </div>
             tab.push(el);
+            date.setDate(date.getDate() - 1)
         }
         return <div className="wrapper">{tab}</div>;
     }

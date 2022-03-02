@@ -1,19 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import StoryRow from "./StoryRow";
+import './PublicationTable.css'
+import RESTService from "../RESTService";
+import {useParams} from "react-router";
 
 
-const headers = ["Kod", "Pozycja", "Tytuł", "Scenariusz", "Rysunki", "Stron", "Czytane"]
-const keys = ["code", "position", "title", "storyAuthor", "artAuthor", "pages"]
+const headers = ["Kod", "Pozycja", "Tytuł", "Scenariusz", "Rysunki", "Stron", "Czytane", "Opcje"]
 
-export default function PublicationTable(props) {
-    return <table className="table table-striped">
-        <thead><tr>
+
+export default function PublicationTable() {
+    const { id } = useParams();
+    const [publication, setPublication] = useState({stories: []});
+
+    useEffect(() => {
+        RESTService.getComicsPublication(id).then(e => {
+            setPublication(e);
+        });
+    }, [id])
+    return <React.Fragment>
+        <h2>{publication.title}</h2>
+        <table className="table table-striped">
+        <thead>
+        <tr>
             {headers.map(header => <th key={header}>{header}</th>)}
-        </tr></thead>
+        </tr>
+        </thead>
         <tbody>
-        {props.data.map(story =>
-            <StoryRow story={story} keys={keys}/>
+        {publication.stories.map(story =>
+            <StoryRow key={story['id']}
+                      story={story}
+                      publicationId={publication.id}/>
         )}
         </tbody>
-    </table>
+    </table></React.Fragment>
 }

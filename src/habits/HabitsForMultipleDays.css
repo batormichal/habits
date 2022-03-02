@@ -1,7 +1,3 @@
-.rectangle {
-    flex: 1 1 0
-}
-
 .date-item {
     margin-left: 1%;
     flex: 1 1 0
@@ -12,12 +8,12 @@
     justify-content: center;
 }
 
-.flex-habits .rectangle .flex {
+.flex-habits .card-table .flex {
     font-size: 100%;
 }
 
 @media screen and (max-width: 700px) {
-    .flex-habits .rectangle .flex {
+    .flex-habits .card-table .flex {
         font-size: 10px;
     }
 }

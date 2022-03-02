@@ -1,10 +1,10 @@
 import React from "react";
-import './Card.css'
+import './CardTable.css'
 import {CardOptions} from "./CardOptions";
 import {getClassStyle} from "./CardTools";
 
-export const Card = (props) => {
-    return <div className={"card-day " + getClassStyle(props.value)}>
+export const CardTable = (props) => {
+    return <div className={"card-table " + getClassStyle(props.value)}>
         {props.maximal && <p className="flex">{props.name}</p>}
         {props.maximal && <p className="value">{props.value || "~"}</p>}
         {props.edit !== false && <CardOptions

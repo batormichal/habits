@@ -1,33 +1,19 @@
 import axios from "axios";
+import {get, post} from "./REST";
 
 
 export default class RESTService {
-    static getAllHabits() {
-        return axios.get('http://localhost:5000/habit-names').then((response) => {
-            console.log(response)
-            return response.data;
-        });
-    }
 
     static getDataForDay(date) {
-        return axios.get('http://localhost:5000/habit-data/' + date).then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:5000/habit-data/' + date);
     }
 
     static getDataForMultipleDays(startDate, endDate) {
-        return axios.get('http://localhost:5000/habit-data/' + startDate + "/" + endDate).then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:5000/habit-data/' + startDate + "/" + endDate);
     }
 
     static getStatisticsForAllHabits() {
-        return axios.get('http://localhost:5000/habit-stats').then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:5000/habit-stats')
     }
 
     static setValueForHabitAndDate(habit, date, value) {
@@ -48,25 +34,19 @@ export default class RESTService {
     static addReadingData(data) {
         data['date'] = new Date();
         data['type'] = 'Paper';
-        console.log(data);
-        return axios.post('http://localhost:5000/read-data', data).then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return post('http://localhost:5000/read-data', data);
     }
 
     static getReadingData() {
-        return axios.get('http://localhost:5000/read-data').then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:5000/read-data')
+    }
+
+    static resetBooksWithSheetData() {
+        return get('http://localhost:5000/read-data/replace')
     }
 
     static getHabitsStreak() {
-        return axios.get('http://localhost:5000/habit-stats/streak').then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:5000/habit-stats/streak')
     }
 
     static addExercise(values) {
@@ -77,16 +57,18 @@ export default class RESTService {
     }
 
     static getExercises() {
-        return axios.get('http://localhost:8080/exercise').then((response) => {
-            console.log(response)
-            return response.data;
-        });
+        return get('http://localhost:8080/exercise');
     }
 
-    static getComicsPublishing() {
-        return axios.get('http://localhost:8080/test').then((response) => {
-            console.log(response)
-            return response.data;
-        });
+    static getComicsPublication(id) {
+        return get('http://localhost:8080/publication/' + id);
+    }
+
+    static addComicsReadingData(data) {
+        return post('http://localhost:8080/reading-data', data);
+    }
+
+    static getAllComicsPublications() {
+        return get('http://localhost:8080/publications')
     }
 }

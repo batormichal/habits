@@ -2,14 +2,14 @@ import React from "react";
 import RESTService from "../RESTService";
 import {Card} from "./Card";
 import moment from "moment";
+import './HabitsForDay.css'
 
 
 export default class HabitsForDay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            date: new Date().toISOString().split('T')[0]
+            data: [], date: new Date().toISOString().split('T')[0]
         }
     }
 
@@ -35,8 +35,7 @@ export default class HabitsForDay extends React.Component {
     }
 
     synchronize = () => {
-        RESTService.putDataFromSheetToMongo().then(e => {
-            console.log(e);
+        RESTService.putDataFromSheetToMongo().then(() => {
             this.updateData();
         })
     }
@@ -61,29 +60,29 @@ export default class HabitsForDay extends React.Component {
     render() {
         return <div className="app">
             <div className="row">
-                <div className="col-sm input-group mb-3"><span
-                    className="input-group-text" id="basic-addon1">Date:</span>
-                    <input className="form-control" type="date"
+                <div className="d-flex justify-content-center">
+                    <button className="button-1">Prev</button>
+                    <button className="button-1">Next</button>
+                    <span>Date:</span>
+                    <input type="date"
                            value={this.state.date}
                            onChange={this.handleDateChange}/>
-                    <button className="form-control"
-                            onClick={this.updateData}>Update
+                    <button
+                        onClick={this.updateData}>Update
                     </button>
-                    <button className="form-control"
-                            onClick={this.synchronize}>Synchronize
+                    <button
+                        onClick={this.synchronize}>Synchronize
                     </button>
-
+                    <span>{moment(this.state.date).format('ddd, D MMMM')}</span>
                 </div>
-                <h1 className="col-sm display-4">{moment(this.state.date).format('ddd, D MMMM')}</h1>
             </div>
-            {
-                this.slice(this.state.data).map(slice =>
-                    <div key={slice[1]['habit']} className="d-flex justify-content-center"
-                    >{slice.map(e =>
-                        <Card key={e.habit} setValue={this.setValue}
-                              name={e.habit} value={e.data.value}
-                              date={this.state.date}/>)}</div>)
-            }
+            {this.slice(this.state.data).map(slice => <div
+                key={slice[0]['habit']}
+                className="d-flex justify-content-center"
+            >{slice.map(e => <Card key={e.habit} maximal={true}
+                                   setValue={this.setValue}
+                                   name={e.habit} value={e.data.value}
+                                   date={this.state.date}/>)}</div>)}
         </div>
     }
 }

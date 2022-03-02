@@ -16,6 +16,9 @@ export const CardOptions = (props) => {
         <button key="," className="btn btn-secondary btn-sm option-button"
                 onClick={() => props.setValue(",")}>,
         </button>
+        <button key="//" className="btn btn-secondary btn-sm option-button"
+                onClick={() => props.setValue("")}>""
+        </button>
     </div>
 
 }
