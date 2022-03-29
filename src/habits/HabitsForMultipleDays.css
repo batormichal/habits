@@ -1,11 +1,7 @@
-.date-item {
-    margin-left: 1%;
-    flex: 1 1 0
-}
-
 .flex-habits {
     display: flex;
     justify-content: center;
+    height: 40px;
 }
 
 .flex-habits .card-table .flex {
@@ -22,10 +18,18 @@
     display: grid;
 }
 
-.stat-item {
+.habits-item {
     flex: 1 1 0;
     text-align: center;
-    margin: 0 0 0 1%;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.date-item {
+    flex: 1 1 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .row .mb-3 {

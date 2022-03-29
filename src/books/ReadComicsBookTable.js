@@ -4,19 +4,19 @@ import TableRow from "./TableRow";
 import './ReadDataTable.css'
 
 
-export const ReadDateTable = () => {
+export const ReadComicsBookTable = () => {
     const [data, setData] = useState([]);
 
 
     useEffect(() => {
-        RESTService.getReadingData().then(e => {
+        RESTService.getComicsBooksReadingData().then(e => {
             setData(e);
         });
     }, [])
 
     const resetWithSheetData = () => {
-        RESTService.resetBooksWithSheetData().then(() => {
-            RESTService.getReadingData().then(e => {
+        RESTService.resetComicsBooksWithSheetData().then(() => {
+            RESTService.getComicsBooksReadingData().then(e => {
                 setData(e);
             });
         });

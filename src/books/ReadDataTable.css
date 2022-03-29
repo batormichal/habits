@@ -1,6 +1,41 @@
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-right-style: solid;
+    border-color: black;
+    border-bottom-style: solid;
+}
 
-/*tr { display: block; float: left; }*/
-/*th, td { display: block; }*/
-.book-table.table tr{
+thead > tr > th {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: black;
+}
+
+th {
+    border-left-style: solid;
+    border-color: black;
+}
+
+tr {
     height: 5vh;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: cadetblue;
+}
+
+td {
+    border-color: black;
+    border-left-style: solid;
+    text-align: center;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}
+
+.book-button.btn-sm{
+    padding-top: 0;
+    padding-bottom: 0;
 }

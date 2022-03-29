@@ -58,31 +58,31 @@ export default class HabitsForDay extends React.Component {
     }
 
     render() {
-        return <div className="app">
-            <div className="row">
-                <div className="d-flex justify-content-center">
-                    <button className="button-1">Prev</button>
-                    <button className="button-1">Next</button>
-                    <span>Date:</span>
-                    <input type="date"
-                           value={this.state.date}
-                           onChange={this.handleDateChange}/>
-                    <button
+        console.log(process.env);
+        return <div>
+            <h1>{process.env.NODE_ENV}</h1>
+            <div className="habit-day-header">
+                <button className="button-1">Prev</button>
+                <button className="button-1">Next</button>
+                <span>Date:</span>
+                <input type="date"
+                       value={this.state.date}
+                       onChange={this.handleDateChange}/>
+                <button className="button-1"
                         onClick={this.updateData}>Update
-                    </button>
-                    <button
+                </button>
+                <button className="button-1"
                         onClick={this.synchronize}>Synchronize
-                    </button>
-                    <span>{moment(this.state.date).format('ddd, D MMMM')}</span>
-                </div>
+                </button>
+                <span>{moment(this.state.date).format('ddd, D MMMM')}</span>
             </div>
             {this.slice(this.state.data).map(slice => <div
-                key={slice[0]['habit']}
-                className="d-flex justify-content-center"
-            >{slice.map(e => <Card key={e.habit} maximal={true}
-                                   setValue={this.setValue}
-                                   name={e.habit} value={e.data.value}
-                                   date={this.state.date}/>)}</div>)}
+                className="habit-day-card"
+                key={slice[0]['habit']}>
+                {slice.map(e => <Card key={e.habit} maximal={true}
+                                      setValue={this.setValue}
+                                      name={e.habit} value={e.data.value}
+                                      date={this.state.date}/>)}</div>)}
         </div>
     }
 }

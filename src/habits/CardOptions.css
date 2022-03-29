@@ -1,8 +1,19 @@
-.options .option-button {
+.options{
+    display: flex;
+    width: 100%;
+}
+.options > span {
     width: 20%;
     background-color: #460A1F;
-    border-color: #460A1F;
+    height: 30px;
     font-weight: bold;
     border-radius: 0;
     font-family: Roboto, serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.options > span:hover {
+    background-color: black;
 }

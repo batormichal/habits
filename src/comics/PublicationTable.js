@@ -10,7 +10,9 @@ const headers = ["Kod", "Pozycja", "Tytuł", "Scenariusz", "Rysunki", "Stron", "
 
 export default function PublicationTable() {
     const { id } = useParams();
-    const [publication, setPublication] = useState({stories: []});
+    const [publication, setPublication] = useState({stories: [],
+        seriesName: ''
+    });
 
     useEffect(() => {
         RESTService.getComicsPublication(id).then(e => {
@@ -18,7 +20,7 @@ export default function PublicationTable() {
         });
     }, [id])
     return <React.Fragment>
-        <h2>{publication.title}</h2>
+        <h2>{publication.seriesName + " - " + publication.title}</h2>
         <table className="table table-striped">
         <thead>
         <tr>

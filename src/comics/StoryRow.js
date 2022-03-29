@@ -1,30 +1,33 @@
 import React, {useState} from "react";
 import {AddComicsReadData} from "./AddComicsReadData";
-
-
-const keys = ["code", "position", "title", "storyAuthor", "artAuthor", "pages", "read"]
+import {Link} from "react-router-dom";
 
 
 export default function StoryRow({story, publicationId}) {
+    console.log(story);
     const [edit, setEdit] = useState({status: false});
-    if (story['read'] === true) {
-        story['read'] = "TAK";
-    } else if (story['read'] === false){
-        story['read'] = "NIE";
-    }
+    const read = (story['read'] === true) ? "TAK" : "NIE";
     return <React.Fragment>
-        <tr key={story[keys[0]]}>
-            {keys.map(key => <td key={key}>{story[key]}</td>)}
+        <tr>
+            <td className="bold-row">{story['code']}</td>
+            <td>{story['position']}</td>
+            <td className="bold-row">{story['title']}</td>
+            <td>{story['storyAuthor']}</td>
+            <td>{story['artAuthor']}</td>
+            <td>{story['pages']}</td>
+            <td className="bold-row">{read}</td>
             <td>
-                <button className="book-button btn"
+                <button className="button-1"
                         onClick={() => setEdit({status: !edit.status})}>Read
                 </button>
+                <Link className="button-1"
+                      to={"/comics/story/" + story.storyId}>Details</Link>
             </td>
         </tr>
         {edit.status && <tr>
-            <td colSpan="10"><AddComicsReadData comics={story}
+            <AddComicsReadData comics={story}
                                                 publicationId={publicationId}/>
-            </td>
+
         </tr>}
     </React.Fragment>
 }

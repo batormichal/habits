@@ -15,3 +15,10 @@ export const post = (url, data) => {
     });
 }
 
+export const getAndSet = (url, set) => {
+    get(url).then(e => set(e));
+}
+
+export const init = (effect, fun, set) => {
+    effect(() => fun(set))
+}

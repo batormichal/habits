@@ -1,36 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import RESTService from "../RESTService";
 import {Link} from "react-router-dom";
+import {init} from "../REST";
 
 
-export default class Series extends React.Component {
+export const Series = () => {
+    const [publications, setPublications] = useState([]);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            publications: [],
-            show: ''
-        }
-    }
+    init(useEffect, RESTService.getAllComicsPublications, setPublications);
 
-    componentDidMount() {
-        this.getData();
-    }
-
-    getData = () => {
-        RESTService.getAllComicsPublications().then(e => {
-            this.setState({publications: e})
-        });
-
-    }
-
-    render() {
-        return <React.Fragment>
-            {this.state.publications.map(e =>
-                <p><Link
-                    to={"/comics/publication/" + e['id']}>{e['title']}</Link>
-                </p>)}
-        </React.Fragment>
-    }
+    return publications.map(e => <Link className="publication-link"
+                                          to={"/comics/publication/" + e['id']}>
+        {e['seriesName']} - {e['title']}
+    </Link>)
 
 }
+

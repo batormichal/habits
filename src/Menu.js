@@ -1,54 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Menu.css'
 
 
-export default class Menu extends React.Component {
-    render() {
-        return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link className="nav-link active"
-                              to="/habits/day">Nawyki</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/habits/table">Tabela
-                            nawyków</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/habits/stats">Statystyki
-                            nawyków</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/books/reading/add">Dodaj
-                            książkę</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/books/reading/table">Tabela
-                            czytania</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/exercises/add">Nowe
-                            ćwiczenie</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active" to="/exercises/table">Tabela
-                            ćwiczeń</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active"
-                              to="/activities/menu">Aktywności</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active"
-                              to="/activities/form">Aktywności</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active"
-                              to="/comics/table">Komiksy</Link>
-                    </li>
-                </ul>
-            </nav>
-        );
-    }
-}
+export const Menu = () => <nav className="navigation-bar">
+    <Link to="/habits/day"><span>Nawyki</span></Link>
+    <Link to="/habits/table"><span>Tabela nawyków</span></Link>
+    <Link to="/habits/stats"><span>Statystyki nawyków</span></Link>
+    <Link to="/books/reading/add"><span>Dodaj książkę</span></Link>
+    <Link to="/books/reading/table"><span>Tabela czytania</span></Link>
+    <Link to="/exercises/add"><span>Nowe ćwiczenie</span></Link>
+    <Link to="/exercises/table"><span>Tabela ćwiczeń</span></Link>
+    <Link to="/activities/menu"><span>Aktywności</span></Link>
+    <Link to="/comics/table"><span>Komiksy</span></Link>
+    <Link to="/comics/reading-list"><span>Czytane komiksy</span></Link>
+</nav>
+

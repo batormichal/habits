@@ -8,22 +8,31 @@ import './ReadDataTable.css'
 export default function TableRow({e}) {
     const [edit, setEdit] = useState({status: false});
 
+    function getPages(pages) {
+        if (e['type'] === "Ebook") {
+            return Math.round(pages * 100) + "%";
+        }
+        return pages;
+    }
+
     return <React.Fragment>
         <tr>
             <th>{moment(e['date']).format('ddd, D MMMM')}</th>
-            <td>{e['title']}</td>
+            <td className="bold-row">{e['title']}</td>
             <td>{e['type']}</td>
-            <td>{e['pages']}</td>
-            <td>{e['next_page']}</td>
-            <td>{e['title'] && Math.round(e['pages_calculated'])}</td>
+            <td>{getPages(e['pages'])}</td>
+            <td>{getPages(e['next_page'])}</td>
+            <td className="bold-row">{e['title'] && Math.round(e['pages_calculated'])}</td>
             <td>
                 {e['title'] !== undefined &&
-                    <button className="btn btn-secondary btn-sm book-button"
+                    <button className="button-1 button-small"
                             onClick={() => setEdit({status: !edit.status})}>Edit
                     </button>
                 }
             </td>
         </tr>
-        {edit.status && <tr><th colSpan="6"><AddReadDataForm book={e}/></th></tr>}
+        {edit.status && <tr>
+            <th colSpan="7"><AddReadDataForm book={e}/></th>
+        </tr>}
     </React.Fragment>
 }
