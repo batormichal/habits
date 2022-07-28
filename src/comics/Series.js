@@ -9,10 +9,17 @@ export const Series = () => {
 
     init(useEffect, RESTService.getAllComicsPublications, setPublications);
 
-    return publications.map(e => <Link className="publication-link"
-                                          to={"/comics/publication/" + e['id']}>
-        {e['seriesName']} - {e['title']}
-    </Link>)
+    return <React.Fragment>
+        <div className="add-form"><label>Url: </label>
+            <input/>
+            <button className="button-1">Dodaj</button>
+        </div>
+        <div className="publication-list">{publications.map(e => <Link
+            className="publication-link"
+            to={"/comics/publication/" + e['id']}>
+            {e['seriesName']} - {e['title']}
+        </Link>)}</div>
+    </React.Fragment>
 
 }
 

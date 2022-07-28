@@ -2,18 +2,17 @@ import axios from "axios";
 import {get, getAndSet, post} from "./REST";
 
 
-const flaskService = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/' : 'https://flask-app-habits.herokuapp.com/';
-// const flaskService = 'https://flask-app-habits.herokuapp.com/';
-const springService = 'http://localhost:8080/';
+const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://localhost:5000/';
+const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://localhost:8080/';
 
 export default class RESTService {
 
     static getDataForDay(date) {
-        return get(flaskService + 'habit-data/' + date);
+        return get(flaskService + 'habits/data/' + date);
     }
 
     static getDataForMultipleDays(startDate, endDate) {
-        return get(flaskService + 'habit-data/' + startDate + "/" + endDate);
+        return get(flaskService + 'habits/habit-data/' + startDate + "/" + endDate);
     }
 
     static getStatisticsForAllHabits() {
@@ -28,8 +27,22 @@ export default class RESTService {
         });
     }
 
-    static putDataFromSheetToMongo() {
-        return axios.put(flaskService + 'old/habit-data/sheet-to-mongo/2022-03-01/false').then((response) => {
+    static putDataFromSheetToMongo(date) {
+        return axios.put(flaskService + 'habits/sheet-to-mongo/' + date + '/false').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+    static putDataFromMongoToSheet(date) {
+        return axios.put(flaskService + 'habits/mongo-to-sheet/' + date).then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+    static postDataFromMongoToSheet(data) {
+        return axios.post(flaskService + 'habits/mongo-to-sheet', data).then((response) => {
             console.log(response)
             return response.data;
         });
@@ -46,11 +59,7 @@ export default class RESTService {
     }
 
     static resetBooksWithSheetData() {
-        return get(flaskService + 'read-data/replace')
-    }
-
-    static getHabitsStreak() {
-        return get(flaskService + 'habit-stats/streak')
+        return get(flaskService + 'read-data/replace/2022-04-01')
     }
 
     static resetComicsBooksWithSheetData() {

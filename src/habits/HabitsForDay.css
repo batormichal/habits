@@ -25,11 +25,6 @@
     margin: 1px;
 }
 
-.button-1:hover,
-.button-1:focus {
-    background-color: #F082AC;
-}
-
 .button-1.button-red{
     background-color: red;
 }

@@ -12,9 +12,28 @@
     line-height: 1.2;
     font-weight: bold;
     color: #460A1F;
+    margin-top: 1vh
 }
 
-.container > a{
-    display: table;
+input {
+    font-size: 150%;
+}
+
+.add-form label {
+    font-size: 120%;
+}
+
+.add-form {
+    display: flex;
+    align-items: center;
+}
+
+.add-form * {
+    margin-right: 1vh;
+}
+
+.publication-list {
     padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
 }

@@ -12,38 +12,34 @@ const Header = (props) => {
         {props.keys.map(e => <CardTableItem
             name={e} show_name={true}
             edit={false}/>)}
-        <CardTableItem/></div>
+        </div>
 }
 
 export default class HabitsForMultipleDays extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: new Map(), streaks: [],
+            values: new Map(), habits: []
         }
     }
 
     componentDidMount() {
         let endDate = new Date().toISOString().split('T')[0]
-        RESTService.getDataForMultipleDays("2022-02-27", endDate).then(e => {
-            this.setState({data: e});
+        RESTService.getDataForMultipleDays("2022-04-01", endDate).then(e => {
+            this.setState({...e});
             console.log(e);
         });
     }
 
     render() {
-        let keys = [];
-        if (Object.keys(this.state.data).length > 2) {
-            let keys_temp = Object.keys(this.state.data);
-            keys = Object.keys(this.state.data[keys_temp[23]])
-        }
+        let data = this.state.values
+        let keys = this.state.habits
         return <div>
             <Header keys={keys}/>
-            {Object.keys(this.state.data).map(e => <div className='flex-habits'>
+            {Object.keys(data).map(e => <div className='flex-habits'>
                 <CardTableDate name={moment(e).format('ddd, D MMMM')}/>
-                {keys.map(k =>
-                    <CardTable name={k} value={this.state.data[e][k]}/>)}
-                <CardTableItem name={"-"} show_name={true}/>
+                {keys.map(k => <CardTable name={k} value={data[e][k]}/>)}
+                {/*<CardTableItem name={"-"} show_name={true}/>*/}
             </div>)}
         </div>
     }

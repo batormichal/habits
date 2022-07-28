@@ -16,6 +16,7 @@ import PublicationTable from "./comics/PublicationTable";
 import StoryPage from "./comics/StoryPage";
 import ReadingDataList from "./comics/ReadingDataList";
 import {ReadComicsBookTable} from "./books/ReadComicsBookTable";
+import Settings from "./settings/Settings";
 
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
                        path="comics/reading-list"/>
                 <Route element={<ReadComicsBookTable/>}
                        path="comics-books/read-data"/>
+                <Route element={<Settings/>}
+                       path="settings"/>
             </Routes></div>
         </BrowserRouter>
     </div>);

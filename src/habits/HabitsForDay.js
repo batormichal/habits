@@ -1,7 +1,6 @@
 import React from "react";
 import RESTService from "../RESTService";
 import {Card} from "./Card";
-import moment from "moment";
 import './HabitsForDay.css'
 
 
@@ -15,18 +14,16 @@ export default class HabitsForDay extends React.Component {
 
 
     componentDidMount() {
-        this.updateData();
-    }
-
-    updateData = () => {
         RESTService.getDataForDay(this.state.date).then(e => {
             this.setState({data: e});
         })
     }
 
-
     handleDateChange = (event) => {
         this.setState({date: event.target.value});
+        RESTService.getDataForDay(event.target.value).then(e => {
+            this.setState({data: e});
+        })
     }
 
     getCard(e) {
@@ -34,8 +31,16 @@ export default class HabitsForDay extends React.Component {
                      date={this.state.date}/>
     }
 
-    synchronize = () => {
-        RESTService.putDataFromSheetToMongo().then(() => {
+    sheetToMongo = () => {
+        let date = new Date();
+        date.setDate(date.getDate() - 5);
+        RESTService.putDataFromSheetToMongo(date.toISOString().split('T')[0]).then(() => {
+            this.updateData();
+        })
+    }
+
+    mongoToSheet = () => {
+        RESTService.putDataFromMongoToSheet(this.state.date).then(() => {
             this.updateData();
         })
     }
@@ -57,24 +62,42 @@ export default class HabitsForDay extends React.Component {
             })
     }
 
+    dayButton = (value) => {
+        console.log("Change date: " + value);
+        let date_o = new Date(this.state.date);
+        date_o.setDate(date_o.getDate() + value);
+        let new_date = date_o.toISOString().split('T')[0];
+        this.setState({date: new_date})
+        RESTService.getDataForDay(new_date).then(e => {
+            this.setState({data: e});
+        })
+    }
+
+    updateData = () => {
+        RESTService.getDataForDay(this.state.date).then(e => {
+            this.setState({data: e});
+        })
+    }
+
     render() {
-        console.log(process.env);
         return <div>
-            <h1>{process.env.NODE_ENV}</h1>
             <div className="habit-day-header">
-                <button className="button-1">Prev</button>
-                <button className="button-1">Next</button>
+                <button className="button-1"
+                        onClick={() => this.dayButton(-1)}>Prev
+                </button>
+                <button className="button-1"
+                        onClick={() => this.dayButton(1)}>Next
+                </button>
                 <span>Date:</span>
                 <input type="date"
                        value={this.state.date}
                        onChange={this.handleDateChange}/>
                 <button className="button-1"
-                        onClick={this.updateData}>Update
+                        onClick={this.mongoToSheet}>Push data
                 </button>
                 <button className="button-1"
-                        onClick={this.synchronize}>Synchronize
+                        onClick={this.sheetToMongo}>Pull data
                 </button>
-                <span>{moment(this.state.date).format('ddd, D MMMM')}</span>
             </div>
             {this.slice(this.state.data).map(slice => <div
                 className="habit-day-card"

@@ -14,5 +14,6 @@ export const Menu = () => <nav className="navigation-bar">
     <Link to="/activities/menu"><span>Aktywności</span></Link>
     <Link to="/comics/table"><span>Komiksy</span></Link>
     <Link to="/comics/reading-list"><span>Czytane komiksy</span></Link>
+    <Link to="/settings"><span>Ustawienia</span></Link>
 </nav>
 

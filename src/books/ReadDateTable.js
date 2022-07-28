@@ -53,8 +53,9 @@ const getBooksList = (data) => {
     for (let i = 0; i < data.length;) {
         let e = data[i];
         let e_date = new Date(e['date'].slice(0, e['date'].indexOf(" ")))
-        if (date.getDate() === e_date.getDate()) {
-            while (date.getDate() === e_date.getDate()) {
+        if (date.getTime() === e_date.getTime()) {
+            while (date.getTime() === e_date.getTime()) {
+                console.log(date.getDate())
                 elements.push(<TableRow e={e} key={e['_id']}/>)
                 i++;
                 if (i < data.length) {
