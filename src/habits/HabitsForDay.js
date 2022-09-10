@@ -26,21 +26,14 @@ export default class HabitsForDay extends React.Component {
         })
     }
 
-    getCard(e) {
-        return <Card name={e.habit} value={e.data.value}
-                     date={this.state.date}/>
-    }
-
-    sheetToMongo = () => {
-        let date = new Date();
-        date.setDate(date.getDate() - 5);
-        RESTService.putDataFromSheetToMongo(date.toISOString().split('T')[0]).then(() => {
+    sheetToPostgres = () => {
+        RESTService.putDataFromSheetToPostgres(this.state.date).then(() => {
             this.updateData();
         })
     }
 
-    mongoToSheet = () => {
-        RESTService.putDataFromMongoToSheet(this.state.date).then(() => {
+    postgresToSheet = () => {
+        RESTService.putDataFromPostgresToSheet(this.state.date).then(() => {
             this.updateData();
         })
     }
@@ -54,8 +47,8 @@ export default class HabitsForDay extends React.Component {
         return new_array;
     }
 
-    setValue = (name, date, new_value) => {
-        RESTService.setValueForHabitAndDate(name, date, new_value)
+    setValue = (name, date, new_value, id) => {
+        RESTService.setValueForHabitAndDate(name, date, new_value, id)
             .then(e => {
                 console.log(e);
                 this.updateData()
@@ -88,24 +81,24 @@ export default class HabitsForDay extends React.Component {
                 <button className="button-1"
                         onClick={() => this.dayButton(1)}>Next
                 </button>
-                <span>Date:</span>
+                <p>Date:</p>
                 <input type="date"
                        value={this.state.date}
                        onChange={this.handleDateChange}/>
                 <button className="button-1"
-                        onClick={this.mongoToSheet}>Push data
+                        onClick={this.postgresToSheet}>Push data
                 </button>
                 <button className="button-1"
-                        onClick={this.sheetToMongo}>Pull data
+                        onClick={this.sheetToPostgres}>Pull data
                 </button>
             </div>
             {this.slice(this.state.data).map(slice => <div
                 className="habit-day-card"
                 key={slice[0]['habit']}>
-                {slice.map(e => <Card key={e.habit} maximal={true}
+                {slice.map(e => <Card key={e.habit+e.id} maximal={true}
                                       setValue={this.setValue}
-                                      name={e.habit} value={e.data.value}
-                                      date={this.state.date}/>)}</div>)}
+                                      name={e.habit} value={e.value}
+                                      date={this.state.date} id={e.id}/>)}</div>)}
         </div>
     }
 }

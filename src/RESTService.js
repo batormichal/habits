@@ -19,30 +19,23 @@ export default class RESTService {
         return get(flaskService + 'habit-stats')
     }
 
-    static setValueForHabitAndDate(habit, date, value) {
-        const data = {"habit": habit, 'date': date, "value": value}
-        return axios.put(flaskService + 'habit-data', data).then((response) => {
+    static setValueForHabitAndDate(habit, date, value, id) {
+        const data = {"habit": habit, 'date': date, "value": value, "id": id}
+        return axios.put(flaskService + 'habits/data', data).then((response) => {
             console.log(response)
             return response.data;
         });
     }
 
-    static putDataFromSheetToMongo(date) {
-        return axios.put(flaskService + 'habits/sheet-to-mongo/' + date + '/false').then((response) => {
+    static putDataFromSheetToPostgres(date) {
+        return axios.put(flaskService + 'habits/sheet-to-postgres/' + date).then((response) => {
             console.log(response)
             return response.data;
         });
     }
 
-    static putDataFromMongoToSheet(date) {
-        return axios.put(flaskService + 'habits/mongo-to-sheet/' + date).then((response) => {
-            console.log(response)
-            return response.data;
-        });
-    }
-
-    static postDataFromMongoToSheet(data) {
-        return axios.post(flaskService + 'habits/mongo-to-sheet', data).then((response) => {
+    static putDataFromPostgresToSheet(date) {
+        return axios.put(flaskService + 'habits/postgres-to-sheet/' + date).then((response) => {
             console.log(response)
             return response.data;
         });

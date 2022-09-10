@@ -1,6 +1,7 @@
 .options{
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
 .options > span {
     width: 20%;

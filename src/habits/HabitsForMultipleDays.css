@@ -36,11 +36,6 @@
     margin: 1rem;
 }
 
-@font-face {
-    font-family: "Neuton";
-    src: url("/src/Neuton-Regular.ttf");
-}
-
 .option-button {
-    font-family: Neuton, serif;
+    font-family: serif;
 }

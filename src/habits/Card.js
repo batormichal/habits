@@ -8,6 +8,6 @@ export const Card = (props) => {
         {props.maximal && <p className="flex">{props.name}</p>}
         {props.maximal && <p className="value">{props.value || "~"}</p>}
         {props.edit !== false && <CardOptions
-            setValue={(p) => props.setValue(props.name, props.date, p)}/>}
+            setValue={(p) => props.setValue(props.name, props.date, p, props.id)}/>}
     </div>
 }

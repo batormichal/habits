@@ -9,7 +9,7 @@ export default function Settings() {
     const sheetToMongo = () => {
         let date = new Date();
         date.setDate(date.getDate() - 5);
-        RESTService.putDataFromSheetToMongo(date.toISOString().split('T')[0]).then(() => {
+        RESTService.putDataFromSheetToPostgres(date.toISOString().split('T')[0]).then(() => {
             setData("Data updated")
         }).catch(() => {
             setData("Operation failed")
