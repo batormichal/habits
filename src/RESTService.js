@@ -51,8 +51,19 @@ export default class RESTService {
         return get(flaskService + 'read-data')
     }
 
-    static resetBooksWithSheetData() {
-        return get(flaskService + 'read-data/replace/2022-04-01')
+    static readDataFromSheetToMongo() {
+        return axios.put(flaskService + 'books/sheet-to-mongo').then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+
+    static moviesFromSheetToMongo() {
+        return axios.put(flaskService + 'movies/sheet-to-mongo').then((response) => {
+            console.log(response)
+            return response.data;
+        });
     }
 
     static resetComicsBooksWithSheetData() {
@@ -81,5 +92,9 @@ export default class RESTService {
 
     static getComicsBooksReadingData() {
         return get(springService + 'reading-data/comics-books');
+    }
+
+    static getMoviesData() {
+        return get(flaskService + 'movies');
     }
 }

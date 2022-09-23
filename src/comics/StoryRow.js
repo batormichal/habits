@@ -26,7 +26,7 @@ export default function StoryRow({story, publicationId}) {
         </tr>
         {edit.status && <tr>
             <AddComicsReadData comics={story}
-                                                publicationId={publicationId}/>
+                               publicationId={publicationId}/>
 
         </tr>}
     </React.Fragment>

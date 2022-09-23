@@ -15,6 +15,6 @@ export default function ReadingDataList() {
     }, [id])
     return <React.Fragment>
         {data.map(e =>
-            <p>{e.code}</p>)}
+                <p>{e.code}</p>)}
     </React.Fragment>
 }

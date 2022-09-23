@@ -2,11 +2,9 @@ import './App.css';
 import React from "react";
 import HabitsForDay from "./habits/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import HabitsForMultipleDays from "./habits/HabitsForMultipleDays";
 import {AddReadDataForm} from "./books/AddReadDataForm";
 import {ReadDateTable} from "./books/ReadDateTable";
 import {Menu} from "./Menu";
-import {HabitsStatistics} from "./habits/HabitsStatistics";
 import {AddExerciseForm} from "./exercises/AddExerciseForm";
 import {ActivitiesMenu} from "./activities/ActivitiesMenu";
 import ActivitiesForm from "./activities/ActivitiesForm";
@@ -17,6 +15,7 @@ import StoryPage from "./comics/StoryPage";
 import ReadingDataList from "./comics/ReadingDataList";
 import {ReadComicsBookTable} from "./books/ReadComicsBookTable";
 import Settings from "./settings/Settings";
+import {MoviesDateTable} from "./movies/MoviesDateTable";
 
 
 function App() {
@@ -28,10 +27,6 @@ function App() {
                        exact path="/"/>
                 <Route element={<HabitsForDay/>}
                        exact path="habits/day"/>
-                <Route element={<HabitsForMultipleDays/>}
-                       path="habits/table"/>
-                <Route element={<HabitsStatistics/>}
-                       path="habits/stats"/>
                 <Route element={<AddReadDataForm/>}
                        path="books/reading/add"/>
                 <Route element={<ReadDateTable/>}
@@ -56,6 +51,8 @@ function App() {
                        path="comics-books/read-data"/>
                 <Route element={<Settings/>}
                        path="settings"/>
+                <Route element={<MoviesDateTable/>}
+                       path="movies/table"/>
             </Routes></div>
         </BrowserRouter>
     </div>);

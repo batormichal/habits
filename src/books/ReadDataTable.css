@@ -39,3 +39,7 @@ td:nth-child(2) {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.add-book{
+    display: flex;
+}
