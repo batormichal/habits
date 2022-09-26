@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import RESTService from "../RESTService";
 import TableRow from "./TableRow";
 import './ReadDataTable.css'
+import {Link} from "react-router-dom";
 
 
 export const ReadDateTable = () => {
@@ -23,6 +24,7 @@ export const ReadDateTable = () => {
     }
 
     return <div>
+        <Link className="button-1" to="/books/reading/add">Dodaj</Link>
         <button className="button-1"
                 onClick={resetWithSheetData}>Pull data
         </button>

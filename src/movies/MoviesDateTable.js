@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import RESTService from "../RESTService";
 import TableRow from "./TableRow";
+import {Link} from "react-router-dom";
 
 
 export const MoviesDateTable = () => {
@@ -13,8 +14,8 @@ export const MoviesDateTable = () => {
         });
     }, [])
 
-    const resetWithSheetData = () => {
-        RESTService.readDataFromSheetToMongo().then(() => {
+    const sheetToMongo = () => {
+        RESTService.moviesFromSheetToMongo().then(() => {
             RESTService.getMoviesData().then(e => {
                 setData(e);
             });
@@ -22,8 +23,9 @@ export const MoviesDateTable = () => {
     }
 
     return <div>
-        <button className="button-1 button-red"
-                onClick={resetWithSheetData}>HARD RESET
+        <Link className="button-1" to="/movies/add">Dodaj</Link>
+        <button className="button-1"
+                onClick={sheetToMongo}>Pull data
         </button>
         {data.length !== 0 && <table className="book-table">
             <thead>

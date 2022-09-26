@@ -42,4 +42,28 @@ td:nth-child(2) {
 
 .add-book{
     display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.input {
+    background-color: purple;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: black;
+    height: 100%;
+    outline: 0;
+    width: 30%;
+    font-size: 22px;
+}
+
+.input-block{
+    display: flex;
+    gap: 1vh;
+}
+
+.input-label{
+    width: 10%;
+    font-size: 22px;
 }
