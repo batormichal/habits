@@ -93,7 +93,7 @@ export default class HabitsForDay extends React.Component {
             <div>
                 <div className="habit-day-header">
                     <button className="button-1"
-                            onClick={() => this.dayButton(-1)}>Prev
+                            onClick={() => this.dayButton(-1)}>Previous
                     </button>
                     <button className="button-1"
                             onClick={() => this.dayButton(1)}>Next
