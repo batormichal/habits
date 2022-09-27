@@ -2,8 +2,8 @@ import axios from "axios";
 import {get, getAndSet, post} from "./REST";
 
 
-const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://localhost:5000/';
-const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://localhost:8080/';
+const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://192.168.0.225:5000/';
+const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://192.168.0.225:8080/';
 
 export default class RESTService {
 
@@ -42,7 +42,6 @@ export default class RESTService {
     }
 
     static addReadingData(data) {
-        data['date'] = new Date();
         data['type'] = 'Paper';
         return post(flaskService + 'read-data', data);
     }
@@ -96,5 +95,12 @@ export default class RESTService {
 
     static getMoviesData() {
         return get(flaskService + 'movies');
+    }
+
+    static deleteReadData(id) {
+        return axios.delete(flaskService + 'read-data/' + id).then((response) => {
+            console.log(response)
+            return response.data;
+        });
     }
 }

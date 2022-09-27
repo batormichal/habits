@@ -22,9 +22,9 @@ function App() {
         <BrowserRouter>
             <Menu/>
             <div className="container"><Routes>
-                <Route element={<HabitsForDay/>}
+                <Route element={<HabitsForDay key="habits"/>}
                        exact path="/"/>
-                <Route element={<HabitsForDay/>}
+                <Route element={<HabitsForDay key="habits"/>}
                        exact path="habits/day"/>
                 <Route element={<AddReadDataForm/>}
                        path="books/reading/add"/>
@@ -50,6 +50,8 @@ function App() {
                        path="settings"/>
                 <Route element={<MoviesDateTable/>}
                        path="movies/table"/>
+                <Route element={<HabitsForDay key="small-habits" type="small"/>}
+                       path="small-habits/day"/>
             </Routes></div>
         </BrowserRouter>
     </div>);

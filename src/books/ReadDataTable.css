@@ -18,7 +18,7 @@ th {
 }
 
 tr {
-    height: 5vh;
+    height: 3vh;
 }
 
 tbody > tr:nth-child(odd) {
@@ -35,12 +35,12 @@ td:nth-child(2) {
     text-align: left;
 }
 
-.book-button.btn-sm{
+.book-button.btn-sm {
     padding-top: 0;
     padding-bottom: 0;
 }
 
-.add-book{
+.add-book {
     display: flex;
     flex-direction: column;
     gap: 1vh;
@@ -58,12 +58,21 @@ td:nth-child(2) {
     font-size: 22px;
 }
 
-.input-block{
+.input-block > .input {
+    color: antiquewhite;
+}
+
+.input-block {
     display: flex;
     gap: 1vh;
 }
 
-.input-label{
+.input-label {
     width: 10%;
     font-size: 22px;
+}
+
+.form-button {
+    width: 40%;
+    font-size: larger;
 }

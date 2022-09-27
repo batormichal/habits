@@ -23,6 +23,15 @@ export const ReadDateTable = () => {
         });
     }
 
+    const deleteReadData = (id) => {
+        RESTService.deleteReadData(id).then(() => {
+            RESTService.getReadingData().then(e => {
+                setData(e);
+            });
+        });
+        console.log(id);
+    }
+
     return <div>
         <Link className="button-1" to="/books/reading/add">Dodaj</Link>
         <button className="button-1"
@@ -41,7 +50,7 @@ export const ReadDateTable = () => {
             </tr>
             </thead>
             <tbody>
-            {data.map(e => <TableRow e={e} key={e['_id']}/>)}
+            {data.map(e => <TableRow key={e['_id'] || e['date']} deleteReadData={e => deleteReadData(e)} e={e}/>)}
             </tbody>
         </table>}
     </div>
