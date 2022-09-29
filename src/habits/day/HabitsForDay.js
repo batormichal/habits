@@ -1,5 +1,5 @@
 import React from "react";
-import RESTService from "../RESTService";
+import RESTService from "../../RESTService";
 import {Card} from "./Card";
 import './HabitsForDay.css'
 

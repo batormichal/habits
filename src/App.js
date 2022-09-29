@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import HabitsForDay from "./habits/HabitsForDay";
+import HabitsForDay from "./habits/day/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AddReadDataForm} from "./books/AddReadDataForm";
 import {ReadDateTable} from "./books/ReadDateTable";
@@ -15,6 +15,7 @@ import StoryPage from "./comics/StoryPage";
 import ReadingDataList from "./comics/ReadingDataList";
 import Settings from "./settings/Settings";
 import {MoviesDateTable} from "./movies/MoviesDateTable";
+import HabitsTable from "./habits/table/HabitsTable";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                        path="movies/table"/>
                 <Route element={<HabitsForDay key="small-habits" type="small"/>}
                        path="small-habits/day"/>
+                <Route element={<HabitsTable/>} path='habits/table'/>
             </Routes></div>
         </BrowserRouter>
     </div>);

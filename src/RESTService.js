@@ -2,8 +2,8 @@ import axios from "axios";
 import {get, getAndSet, post} from "./REST";
 
 
-const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://192.168.0.225:5000/';
-const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://192.168.0.225:8080/';
+const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://127.0.0.1:5000/';
+const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://127.0.0.1:8080/';
 
 export default class RESTService {
 
@@ -12,11 +12,11 @@ export default class RESTService {
     }
 
     static getDataForMultipleDays(startDate, endDate) {
-        return get(flaskService + 'habits/habit-data/' + startDate + "/" + endDate);
+        return get(flaskService + 'habits/many-days/' + startDate + "/" + endDate);
     }
 
-    static getStatisticsForAllHabits() {
-        return get(flaskService + 'habit-stats')
+    static getActiveHabits() {
+        return get(flaskService + 'habits')
     }
 
     static setValueForHabitAndDate(habit, date, value, id) {
