@@ -18,7 +18,7 @@ export default class HabitsTable extends React.Component {
 
     updateData = () => {
         let tab = []
-        RESTService.getActiveHabits().then(e => e.map(l => tab.push(l['name'])))
+        RESTService.getActiveHabits().then(e => this.setState({habits:e}))
         this.setState({habits: tab})
         RESTService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => this.setState({data: e}))
     }
@@ -39,17 +39,20 @@ export default class HabitsTable extends React.Component {
     }
 
     render() {
-        return <table>
+        return <table className="habits-table">
             <thead>
             <tr>
                 <th>Data</th>
-                {this.state.habits.map(e => <th>{e}</th>)}
+                {this.state.habits.map(e => <th key={e['name']+'name'}>{e['name']}</th>)}
             </tr>
             </thead>
             <tbody>
-            {this.state.data.map(date => <tr>
+            <tr>
+                <td>STREAK</td>
+                {this.state.habits.map(e => <th key={e['name'] + "streak"}>{e['streak']}</th>)}</tr>
+            {this.state.data.map(date => <tr key={date[0]}>
                 <td>{date[0]}</td>
-                {this.state.habits.map(value => <td className={this.getCellClass(date[1][value])}>{date[1][value]}</td>)}</tr>)}</tbody>
+                {this.state.habits.map(value => <td key={date[0]+value['name']} className={this.getCellClass(date[1][value['name']])}>{date[1][value['name']]}</td>)}</tr>)}</tbody>
         </table>
     }
 }

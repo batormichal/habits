@@ -1,13 +1,31 @@
-.cell-v{
+.cell-v {
     background-color: green;
+    color: green;
 }
 
-.cell-x{
-    background-color: red;
+.cell-x {
+    background-color: darkred;
+    color: darkred;
 }
-.cell-neutral{
+
+.cell-neutral {
     background-color: grey;
+    color: gray;
 }
-.cell-comma{
-    background-color: yellow;
+
+.cell-comma {
+    background-color: orange;
+    color: orange;
+}
+
+.habits-table td {
+    text-align: center;
+}
+
+.habits-table tbody > tr:first-child {
+    background-color: lightblue;
+}
+
+.habits-table th {
+    width: 8%;
 }
