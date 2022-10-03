@@ -75,17 +75,16 @@ export default class HabitsForDay extends React.Component {
             RESTService.getDataForDay(this.state.date).then(e => {
                 this.setState({data: e});
                 this.calculateResult();
+
             })
         }
 
     }
 
     calculateResult = () => {
-        console.log("___YYY____")
         this.setState({
             result: this.state.data.filter(x => x.value === "v").length
         })
-        this.state.data.forEach(e => console.log(e.value))
     }
 
     render() {

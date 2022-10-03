@@ -1,0 +1,13 @@
+.cell-v{
+    background-color: green;
+}
+
+.cell-x{
+    background-color: red;
+}
+.cell-neutral{
+    background-color: grey;
+}
+.cell-comma{
+    background-color: yellow;
+}
