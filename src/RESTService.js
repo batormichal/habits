@@ -1,10 +1,6 @@
 import axios from "axios";
 import {get, getAndSet, post} from "./REST";
-
-
-const flaskService = process.env.REACT_APP_MODE === 'production' ? 'https://flask-app-habits.herokuapp.com/' : 'http://127.0.0.1:5000/';
-const springService = process.env.REACT_APP_MODE === 'production' ? 'https://spring-app-habits.herokuapp.com/' : 'http://127.0.0.1:8080/';
-
+import {flaskService, springService} from './local_properties.js'
 export default class RESTService {
 
     static getDataForDay(date) {
