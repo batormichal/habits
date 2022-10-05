@@ -10,7 +10,6 @@ export default function StoryRow({story, publicationId}) {
     return <React.Fragment>
         <tr>
             <td className="bold-row">{story['code']}</td>
-            <td>{story['position']}</td>
             <td className="bold-row">{story['title']}</td>
             <td>{story['storyAuthor']}</td>
             <td>{story['artAuthor']}</td>

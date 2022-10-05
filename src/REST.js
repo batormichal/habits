@@ -20,5 +20,5 @@ export const getAndSet = (url, set) => {
 }
 
 export const init = (effect, fun, set) => {
-    effect(() => fun(set))
+    effect(() => fun(set),[])
 }

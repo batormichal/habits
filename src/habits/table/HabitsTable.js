@@ -36,6 +36,9 @@ export default class HabitsTable extends React.Component {
         else if (value === ","){
             return "cell-comma"
         }
+        else if (value === ""){
+            return "cell-empty"
+        }
     }
 
     render() {

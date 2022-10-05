@@ -18,6 +18,10 @@
     color: orange;
 }
 
+.cell-empty {
+    background-color: #f1f2df;
+}
+
 .habits-table td {
     text-align: center;
 }

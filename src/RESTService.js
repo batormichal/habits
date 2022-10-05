@@ -65,9 +65,6 @@ export default class RESTService {
         });
     }
 
-    static resetComicsBooksWithSheetData() {
-        return get(flaskService + 'read-data/comics-books/replace')
-    }
 
     static getComicsPublication(id) {
         return get(springService + 'publication/' + id);
@@ -85,12 +82,12 @@ export default class RESTService {
         return get(springService + 'story/' + id);
     }
 
-    static getAllReadingData() {
-        return get(springService + 'reading-data/');
+    static addComicsByUrl(url){
+        return post(springService + 'save/',{'url':url});
     }
 
-    static getComicsBooksReadingData() {
-        return get(springService + 'reading-data/comics-books');
+    static getAllReadingData() {
+        return get(springService + 'reading-data/');
     }
 
     static getMoviesData() {

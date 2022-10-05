@@ -5,7 +5,7 @@ import RESTService from "../RESTService";
 import {useParams} from "react-router";
 
 
-const headers = ["Kod", "Pozycja", "Tytuł", "Scenariusz", "Rysunki", "Stron", "Czytane", "Opcje"]
+const headers = ["Kod", "Tytuł", "Scenariusz", "Rysunki", "Stron", "Czytane", "Opcje"]
 
 
 export default function PublicationTable() {

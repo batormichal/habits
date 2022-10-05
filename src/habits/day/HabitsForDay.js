@@ -83,7 +83,7 @@ export default class HabitsForDay extends React.Component {
 
     calculateResult = () => {
         this.setState({
-            result: this.state.data.filter(x => x.value === "v").length
+            result: this.state.data.filter(x => x.value === "v").length + this.state.data.filter(x => x.value === "-").length / 2
         })
     }
 
