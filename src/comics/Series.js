@@ -7,7 +7,7 @@ import {useForm} from "react-hook-form";
 
 export const Series = () => {
     const [publications, setPublications] = useState([]);
-    const {register, handleSubmit, formState: {}} = useForm();
+    const {register, handleSubmit} = useForm();
 
     init(useEffect, RESTService.getAllComicsPublications, setPublications);
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {get, getAndSet, post} from "./REST";
-import {flaskService, springService} from './local_properties.js'
+import {flaskService, springService, getFileService, storeFileService} from './local_properties.js'
 export default class RESTService {
 
     static getDataForDay(date) {
