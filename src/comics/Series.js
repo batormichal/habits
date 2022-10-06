@@ -7,7 +7,7 @@ import {useForm} from "react-hook-form";
 
 export const Series = () => {
     const [publications, setPublications] = useState([]);
-    const {register, handleSubmit, formState: {}} = useForm();
+    const {register, handleSubmit} = useForm();
 
     init(useEffect, RESTService.getAllComicsPublications, setPublications);
 
@@ -16,7 +16,7 @@ export const Series = () => {
     return <React.Fragment>
         <form className="add-form" onSubmit={handleSubmit(onSubmit)}><label>Url: </label>
             <input {...register('title')} id="url"/>
-            <button type='submit' className="button-1" >Dodaj</button>
+            <button type='submit' className="button-1">Dodaj</button>
         </form>
         <div className="publication-list">{publications.map(e => <Link
             className="publication-link"

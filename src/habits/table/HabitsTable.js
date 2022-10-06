@@ -8,7 +8,7 @@ export default class HabitsTable extends React.Component {
         let endDate = new Date();
         endDate = endDate.setDate(endDate.getDate() - 10);
         this.state = {
-            data: [], startDate: new Date().toISOString().split('T')[0], endDate: endDate, habits: []
+            data: [], startDate: new Date().toISOString().split('T')[0], endDate: endDate, habits: [], loading: true
         }
     }
 
@@ -18,44 +18,47 @@ export default class HabitsTable extends React.Component {
 
     updateData = () => {
         let tab = []
-        RESTService.getActiveHabits().then(e => this.setState({habits:e}))
+        RESTService.getActiveHabits().then(e => this.setState({habits: e}))
         this.setState({habits: tab})
-        RESTService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => this.setState({data: e}))
+        RESTService.getDataForMultipleDays(this.state.startDate, this.state.endDate).then(e => this.setState({
+            data: e, loading: false
+        }))
     }
 
     getCellClass = (value) => {
-        if(value === 'v'){
+        if (value === 'v') {
             return "cell-v"
-        }
-        else if(value === 'x'){
+        } else if (value === 'x') {
             return "cell-x"
-        }
-        else if (value==='-'){
+        } else if (value === '-') {
             return "cell-neutral"
-        }
-        else if (value === ","){
+        } else if (value === ",") {
             return "cell-comma"
-        }
-        else if (value === ""){
+        } else if (value === "") {
             return "cell-empty"
         }
     }
 
     render() {
-        return <table className="habits-table">
-            <thead>
-            <tr>
-                <th>Data</th>
-                {this.state.habits.map(e => <th key={e['name']+'name'}>{e['name']}</th>)}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>STREAK</td>
-                {this.state.habits.map(e => <th key={e['name'] + "streak"}>{e['streak']}</th>)}</tr>
-            {this.state.data.map(date => <tr key={date[0]}>
-                <td>{date[0]}</td>
-                {this.state.habits.map(value => <td key={date[0]+value['name']} className={this.getCellClass(date[1][value['name']])}>{date[1][value['name']]}</td>)}</tr>)}</tbody>
-        </table>
+        return <React.Fragment>
+            {!this.state.loading && <table className="habits-table">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    {this.state.habits.map(e => <th key={e['name'] + 'name'}>{e['name']}</th>)}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>STREAK</td>
+                    {this.state.habits.map(e => <th key={e['name'] + "streak"}>{e['streak']}</th>)}</tr>
+                {this.state.data.map(date => <tr key={date[0]}>
+                    <td>{date[0]}</td>
+                    {this.state.habits.map(value => <td key={date[0] + value['name']}
+                                                        className={this.getCellClass(date[1][value['name']])}>{date[1][value['name']]}</td>)}
+                </tr>)}</tbody>
+            </table>}
+            {this.state.loading && <h1>LOADING...</h1>}
+        </React.Fragment>
     }
 }

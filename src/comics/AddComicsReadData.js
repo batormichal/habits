@@ -5,7 +5,7 @@ import Calendar from "react-calendar";
 
 export const AddComicsReadData = (props) => {
     const comics = props.comics;
-    const [status, setStatus] = useState({success: false});
+    const [status, setStatus] = useState({success: ''});
     const [date, setDate] = useState(new Date());
 
     const handleSubmit = () => {
@@ -16,10 +16,11 @@ export const AddComicsReadData = (props) => {
             date: adjusted_date.toISOString().split('T')[0],
             publicationId: props.publicationId,
             id: null,
+            completed: true,
             printId: comics.id
         }
         console.log(data);
-        RESTService.addComicsReadingData(data).then(() => setStatus({success: true}))
+        RESTService.addComicsReadingData(data).then(() => setStatus({success: 'Dodano'}))
     }
 
     return <td colSpan="10">

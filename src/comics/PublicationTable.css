@@ -37,3 +37,8 @@ input {
     display: flex;
     flex-direction: column;
 }
+
+.comicsHeader{
+    display: flex;
+    justify-content: space-around;
+}

@@ -9,30 +9,35 @@ const headers = ["Kod", "Tytuł", "Scenariusz", "Rysunki", "Stron", "Czytane", "
 
 
 export default function PublicationTable() {
-    const { id } = useParams();
-    const [publication, setPublication] = useState({stories: [],
-        seriesName: ''
+    const {id} = useParams();
+    const [loading, setLoading] = useState(true);
+    const [publication, setPublication] = useState({
+        stories: [], seriesName: ''
     });
 
     useEffect(() => {
         RESTService.getComicsPublication(id).then(e => {
             setPublication(e);
+            setLoading(false);
         });
     }, [id])
     return <React.Fragment>
-        <h2>{publication.seriesName + " - " + publication.title}</h2>
-        <table className="table table-striped">
-        <thead>
-        <tr>
-            {headers.map(header => <th key={header}>{header}</th>)}
-        </tr>
-        </thead>
-        <tbody>
-        {publication.stories.map(story =>
-            <StoryRow key={story['id']}
-                      story={story}
-                      publicationId={publication.id}/>
-        )}
-        </tbody>
-    </table></React.Fragment>
+        {!loading && <React.Fragment>
+            <div className="comicsHeader"><h2>{publication.seriesName + " - " + publication.title}</h2>
+                <img alt="MGG51" style={{width: "200px"}} src={"http://192.168.0.225:6001/" + publication.cover}/></div>
+            <table className="table table-striped">
+                <thead>
+                <tr>
+                    {headers.map(header => <th key={header}>{header}</th>)}
+                </tr>
+                </thead>
+                <tbody>
+                {publication.stories.map(story => <StoryRow key={story['id']}
+                                                            story={story}
+                                                            publicationId={publication.id}/>)}
+                </tbody>
+            </table>
+        </React.Fragment>}
+        {loading && <h2>LOADING... {id}</h2>}
+    </React.Fragment>
 }

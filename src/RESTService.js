@@ -1,6 +1,7 @@
 import axios from "axios";
 import {get, getAndSet, post} from "./REST";
 import {flaskService, springService} from './local_properties.js'
+
 export default class RESTService {
 
     static getDataForDay(date) {
@@ -66,6 +67,10 @@ export default class RESTService {
         return get(springService + 'publication/' + id);
     }
 
+    static getReadingDataForStory(storyId) {
+        return get(springService + 'reading-data/' + storyId);
+    }
+
     static addComicsReadingData(data) {
         return post(springService + 'reading-data', data);
     }
@@ -78,8 +83,8 @@ export default class RESTService {
         return get(springService + 'story/' + id);
     }
 
-    static addComicsByUrl(url){
-        return post(springService + 'save/',{'url':url});
+    static addComicsByUrl(url) {
+        return post(springService + 'save/', {'url': url});
     }
 
     static getAllReadingData() {

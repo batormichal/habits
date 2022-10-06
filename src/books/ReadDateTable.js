@@ -7,11 +7,12 @@ import {Link} from "react-router-dom";
 
 export const ReadDateTable = () => {
     const [data, setData] = useState([]);
-
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         RESTService.getReadingData().then(e => {
             setData(e);
+            setLoading(false);
         });
     }, [])
 
@@ -38,7 +39,7 @@ export const ReadDateTable = () => {
                 onClick={resetWithSheetData}>Pull data
         </button>
         <a href="http://127.0.0.1:5000/books/check-sync" className="button-1">Check sync</a>
-        {data.length !== 0 && <table className="book-table">
+        {!loading && <table className="book-table">
             <thead>
             <tr>
                 <th>Data</th>
@@ -54,5 +55,6 @@ export const ReadDateTable = () => {
             {data.map(e => <TableRow key={e['_id'] || e['date']} deleteReadData={e => deleteReadData(e)} e={e}/>)}
             </tbody>
         </table>}
+        {loading && <h2>LOADING...</h2>}
     </div>
 }
