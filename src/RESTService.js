@@ -1,6 +1,7 @@
 import axios from "axios";
 import {get, getAndSet, post} from "./REST";
-import {flaskService, springService, getFileService, storeFileService} from './local_properties.js'
+import {flaskService, springService, getFileService} from './local_properties.js'
+
 export default class RESTService {
 
     static getDataForDay(date) {
@@ -38,7 +39,6 @@ export default class RESTService {
     }
 
     static addReadingData(data) {
-        data['type'] = 'Paper';
         return post(flaskService + 'read-data', data);
     }
 
@@ -78,8 +78,8 @@ export default class RESTService {
         return get(springService + 'story/' + id);
     }
 
-    static addComicsByUrl(url){
-        return post(springService + 'save/',{'url':url});
+    static addComicsByUrl(url) {
+        return post(springService + 'save/', {'url': url});
     }
 
     static getAllReadingData() {
@@ -95,5 +95,13 @@ export default class RESTService {
             console.log(response)
             return response.data;
         });
+    }
+
+    static getReadingDataForStory(id) {
+        return null;
+    }
+
+    static getCover(cover) {
+        return getFileService + cover;
     }
 }

@@ -32,6 +32,14 @@ export const AddReadDataForm = () => {
                    onChange={(e) => handleDateChange(e)}/>
         </div>
         <div className="input-block">
+            <label className="input-label" htmlFor="title">Stron</label>
+            <input id="title" className="input" {...register("pages", {required: true})} />
+        </div>
+        <div className="input-block">
+            <label className="input-label" htmlFor="title">Do</label>
+            <input id="title" className="input" {...register("nextPage", {required: true})} />
+        </div>
+        <div className="input-block">
             <label className="input-label" htmlFor="title">Typ</label>
             <select id="type" className="input" {...register("type", {required: true})} >
                 <option>Paper</option>

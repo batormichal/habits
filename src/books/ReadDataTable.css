@@ -17,7 +17,7 @@ th {
     border-color: black;
 }
 
-tr {
+.book-table tr {
     height: 3vh;
 }
 

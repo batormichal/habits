@@ -22,6 +22,10 @@
     background-color: #f1f2df;
 }
 
+.habits-table tr {
+    height: 5vh;
+}
+
 .habits-table td {
     text-align: center;
 }

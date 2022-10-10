@@ -12,10 +12,10 @@ import ExercisesTable from "./exercises/ExercisesTable";
 import {Series} from "./comics/Series";
 import PublicationTable from "./comics/PublicationTable";
 import StoryPage from "./comics/StoryPage";
-import ReadingDataList from "./comics/ReadingDataList";
 import Settings from "./settings/Settings";
 import {MoviesDateTable} from "./movies/MoviesDateTable";
 import HabitsTable from "./habits/table/HabitsTable";
+import {ReadingDataTable} from "./comics/ReadingDataTable";
 
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
                        path="comics/publication/:id"/>
                 <Route element={<StoryPage/>}
                        path="comics/story/:id"/>
-                <Route element={<ReadingDataList/>}
+                <Route element={<ReadingDataTable/>}
                        path="comics/reading-list"/>
                 <Route element={<Settings/>}
                        path="settings"/>
