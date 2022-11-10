@@ -104,4 +104,8 @@ export default class RESTService {
     static getCover(cover) {
         return getFileService + cover;
     }
+
+    static getReadingPeriodData() {
+        return get(flaskService + 'period-data');
+    }
 }

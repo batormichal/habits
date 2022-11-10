@@ -22,6 +22,11 @@
     background-color: #f1f2df;
 }
 
+.cell-slash {
+    background-color: mediumpurple;
+    color: mediumpurple;
+}
+
 .habits-table tr {
     height: 5vh;
 }

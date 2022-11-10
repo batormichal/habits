@@ -16,6 +16,7 @@ import Settings from "./settings/Settings";
 import {MoviesDateTable} from "./movies/MoviesDateTable";
 import HabitsTable from "./habits/table/HabitsTable";
 import {ReadingDataTable} from "./comics/ReadingDataTable";
+import {PeriodReadingStats} from "./books/statistics/PeriodReadingStats";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
                        path="comics/story/:id"/>
                 <Route element={<ReadingDataTable/>}
                        path="comics/reading-list"/>
+                <Route element={<PeriodReadingStats/>} path="books/period"/>
                 <Route element={<Settings/>}
                        path="settings"/>
                 <Route element={<MoviesDateTable/>}
