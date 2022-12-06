@@ -6,9 +6,8 @@ export default class HabitsTable extends React.Component {
     constructor(props) {
         super(props);
         let endDate = new Date();
-        endDate = endDate.setDate(endDate.getDate() - 10);
         this.state = {
-            data: [], startDate: new Date().toISOString().split('T')[0], endDate: endDate, habits: [], loading: true
+            data: [], startDate: new Date().toISOString().split('T')[0], endDate: endDate.toISOString().split('T')[0], habits: [], loading: true
         }
     }
 

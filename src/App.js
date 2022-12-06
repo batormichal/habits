@@ -17,6 +17,7 @@ import {MoviesDateTable} from "./movies/MoviesDateTable";
 import HabitsTable from "./habits/table/HabitsTable";
 import {ReadingDataTable} from "./comics/ReadingDataTable";
 import {PeriodReadingStats} from "./books/statistics/PeriodReadingStats";
+import {DefaultTable} from "./activities/table/DefaultTable";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                 <Route element={<HabitsForDay key="small-habits" type="small"/>}
                        path="small-habits/day"/>
                 <Route element={<HabitsTable/>} path='habits/table'/>
+                <Route element={<DefaultTable/>} path='table'/>
             </Routes></div>
         </BrowserRouter>
     </div>);
