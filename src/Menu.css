@@ -25,3 +25,7 @@ nav > a:active{
     text-decoration: none;
     color: black;
 }
+
+.menu-div{
+    width: 30%;
+}

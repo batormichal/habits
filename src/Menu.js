@@ -4,6 +4,7 @@ import './Menu.css'
 
 
 export const Menu = () => <nav className="navigation-bar">
+    <div className="menu-div"></div>
     <Link to="/habits/day"><span>Nawyki</span></Link>
     <Link to="/habits/table"><span>Tabela</span></Link>
     <Link to="/books/reading/table"><span>Książki</span></Link>
