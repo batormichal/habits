@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import RESTService from "../RESTService";
 import TableRow from "./TableRow";
 import {Link} from "react-router-dom";
+import {moviesSyncCheck} from "../local_properties";
 
 
 export const MoviesDateTable = () => {
@@ -27,7 +28,7 @@ export const MoviesDateTable = () => {
         <button className="button-1"
                 onClick={sheetToMongo}>Pull data
         </button>
-        <a href="http://192.168.0.170:5000/movies/check-sync" className="button-1">Check sync</a>
+        <a href={moviesSyncCheck} className="button-1">Check sync</a>
         {data.length !== 0 && <table className="book-table">
             <thead>
             <tr>

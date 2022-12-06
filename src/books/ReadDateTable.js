@@ -3,6 +3,7 @@ import RESTService from "../RESTService";
 import TableRow from "./TableRow";
 import './ReadDataTable.css'
 import {Link} from "react-router-dom";
+import {bookSyncCheck} from "../local_properties";
 
 
 export const ReadDateTable = () => {
@@ -38,7 +39,7 @@ export const ReadDateTable = () => {
         <button className="button-1"
                 onClick={resetWithSheetData}>Pull data
         </button>
-        <a href="http://192.168.0.170:5000/books/check-sync" className="button-1">Check sync</a>
+        <a href={bookSyncCheck} className="button-1">Check sync</a>
         {!loading && <table className="book-table">
             <thead>
             <tr>
