@@ -27,6 +27,7 @@ export const MoviesDateTable = () => {
         <button className="button-1"
                 onClick={sheetToMongo}>Pull data
         </button>
+        <a href="http://192.168.0.170:5000/movies/check-sync" className="button-1">Check sync</a>
         {data.length !== 0 && <table className="book-table">
             <thead>
             <tr>

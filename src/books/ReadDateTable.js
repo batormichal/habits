@@ -38,7 +38,7 @@ export const ReadDateTable = () => {
         <button className="button-1"
                 onClick={resetWithSheetData}>Pull data
         </button>
-        <a href="http://127.0.0.1:5000/books/check-sync" className="button-1">Check sync</a>
+        <a href="http://192.168.0.170:5000/books/check-sync" className="button-1">Check sync</a>
         {!loading && <table className="book-table">
             <thead>
             <tr>
