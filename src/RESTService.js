@@ -13,7 +13,7 @@ export default class RESTService {
     }
 
     static getActiveHabits() {
-        return get(flaskService + 'habits')
+        return get(flaskService + 'habits/statistics/streaks')
     }
 
     static setValueForHabitAndDate(habit, date, value, id) {
@@ -95,10 +95,6 @@ export default class RESTService {
             console.log(response)
             return response.data;
         });
-    }
-
-    static getReadingDataForStory(id) {
-        return null;
     }
 
     static getCover(cover) {

@@ -42,3 +42,7 @@
 .habits-table th {
     width: 8%;
 }
+
+.day-result {
+    font-weight: bold;
+}
