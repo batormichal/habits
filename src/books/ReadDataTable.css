@@ -76,3 +76,7 @@ td:nth-child(2) {
     width: 40%;
     font-size: larger;
 }
+table{
+    table-layout: fixed;
+    width: 100%;
+}

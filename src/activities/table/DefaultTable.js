@@ -1,32 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import TableRow from "./TableRow";
 import '../../books/ReadDataTable.css'
-import {Link} from "react-router-dom";
 
 
-export const DefaultTable = () => {
-    const [data, setData] = useState([]);
+export const DefaultTable = (props) => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        setData([])
         setLoading(false);
     }, [])
 
-    const headers = ['1', 'A']
+    const headers = props.headers
+    const keys = props.keys
+    const data = props.data
+
     const deleteRow = (id) => {
         console.log(id);
     }
 
     return <div>
-        <Link className="button-1" to="/books/reading/add">Dodaj</Link>
+        <button className="button-1">Add</button>
         {!loading && <table className="book-table">
             <thead>
             <tr>
                 {headers.map(e => <th>{e}</th>)}
+                <th>Options</th>
             </tr>
             </thead>
             <tbody>
-            {data.map(e => <TableRow key={e['_id']} deleteRow={e => deleteRow(e)} e={e}/>)}
+            {data.map(e => <TableRow key={e['_id']} deleteRow={e => deleteRow(e)} keys={keys} data={e}/>)}
             </tbody>
         </table>}
         {loading && <h2>LOADING...</h2>}
