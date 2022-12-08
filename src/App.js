@@ -32,7 +32,7 @@ function App() {
                 <Route element={<ReadDateTable/>}
                        path="books/reading/table"/>
                 <Route element={<ActivitiesMenu/>}
-                       path="activities/menu"/>
+                       path="activities"/>
                 <Route element={<ActivitiesForm/>}
                        path="activities/form"/>
                 <Route element={<Series/>}

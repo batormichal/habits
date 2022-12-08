@@ -18,8 +18,7 @@ export const DefaultTable = (props) => {
     }
 
     return <div>
-        <button className="button-1">Add</button>
-        {!loading && <table className="book-table">
+        {!loading && <table className="activity-table book-table">
             <thead>
             <tr>
                 {headers.map(e => <th>{e}</th>)}

@@ -20,13 +20,11 @@ export const ActivitiesMenu = () => {
             </button>
         </div>
         <ActivitiesForm component={show.component}/>
-        {show.component === 'stress' &&
-            <React.Fragment><DefaultTable data={[{'d': "s", "s": "dududu"}]} headers={["TEST", "2"]}
-                                          keys={["d", "s"]}/>
-            </React.Fragment>}
-        {show.component === 'outgoing' && <React.Fragment><DefaultTable data={[]} headers={["d", "UUUU"]}
-                                                                        keys={["d", "s"]}/></React.Fragment>}
-        {show.component === 'learning' && <React.Fragment><DefaultTable data={[]} headers={["d", "Learning"]}
-                                                                        keys={["d", "s"]}/></React.Fragment>}
+        {show.component === 'stress' && <DefaultTable data={[{'d': "s", "s": "dududu"}]} headers={["TEST", "2"]}
+                                                      keys={["d", "s"]}/>}
+        {show.component === 'outgoing' && <DefaultTable data={[]} headers={["d", "UUUU"]}
+                                                        keys={["d", "s"]}/>}
+        {show.component === 'learning' && <DefaultTable data={[]} headers={["d", "Learning"]}
+                                                        keys={["d", "s"]}/>}
     </React.Fragment>
 }

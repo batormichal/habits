@@ -1,14 +1,38 @@
-.activity-selector{
+.activity-selector {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     height: 20vh;
 }
 
-.activity-selector > button{
+.activity-selector > button {
     width: 50vh;
     padding: 1vh;
     background-color: #00F2BA;
     font-size: 5vh;
     font-weight: bold;
+}
+
+.activity-form {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.activity-form > input {
+    margin-right: 5px
+}
+
+.input-long {
+    width: 50%;
+}
+
+.input-short {
+    width: 10%;
+}
+
+.activity-table {
+    table-layout: fixed;
+    width: 100%;
 }

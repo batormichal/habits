@@ -37,7 +37,7 @@ export const AddReadDataForm = () => {
         </div>
         <div className="input-block">
             <label className="input-label" htmlFor="title">Do</label>
-            <input id="title" className="input" {...register("nextPage", {required: true})} />
+            <input id="title" className="input" {...register("next_page", {required: true})} />
         </div>
         <div className="input-block">
             <label className="input-label" htmlFor="title">Typ</label>
