@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import RESTService from "../../RESTService";
 import TableRow from "./TableRow";
-import '../ReadDataTable.css'
+import './PeriodReadingStats.css'
 
 
 export const PeriodReadingStats = () => {
@@ -16,10 +16,10 @@ export const PeriodReadingStats = () => {
     }, [])
 
     return <div>
-        {!loading && <table className="book-table">
+        {!loading && <table className="book-stats-table">
             <thead>
             <tr>
-                <th>Koniec tygodnia</th>
+                <th className="date">Koniec tygodnia</th>
                 <th className="title">Stron</th>
             </tr>
             </thead>

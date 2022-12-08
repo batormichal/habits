@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import '../ReadDataTable.css'
+import './PeriodReadingStats.css'
 
 
 export default function TableRow(props) {
@@ -8,9 +8,9 @@ export default function TableRow(props) {
 
 
     return <React.Fragment>
-        <tr>
+        <tr className={e['pages']>70 && "bold-row-stats"}>
             <th>{moment(e['date']).format('ddd, D MMMM')}</th>
-            <td className="bold-row">{e['pages']}</td>
+            <td>{e['pages']}</td>
         </tr>
     </React.Fragment>
 }
