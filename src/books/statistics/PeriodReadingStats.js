@@ -10,6 +10,7 @@ export const PeriodReadingStats = () => {
 
     useEffect(() => {
         RESTService.getReadingPeriodData().then(e => {
+            e = e.sort((a, b) => b['pages']-a['pages'])
             setData(e);
             setLoading(false);
         });
@@ -19,12 +20,13 @@ export const PeriodReadingStats = () => {
         {!loading && <table className="book-stats-table">
             <thead>
             <tr>
+                <th>Index</th>
                 <th className="date">Koniec tygodnia</th>
                 <th className="title">Stron</th>
             </tr>
             </thead>
             <tbody>
-            {data.map(e => <TableRow key={e['_id'] || e['date']} e={e}/>)}
+            {data.map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index+1}/>)}
             </tbody>
         </table>}
         {loading && <h2>LOADING...</h2>}

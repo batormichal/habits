@@ -2,17 +2,18 @@
     width: 30%;
 }
 
-.book-stats-table > * th {
+.book-stats-table > tbody > tr.bold-row-stats > th:nth-child(3){
+    font-weight: bold;
+    font-size: 110%;
+}
+.book-stats-table > * tr > th {
     font-weight: normal;
 }
-
-.book-stats-table > tbody > tr.bold-row-stats {
+.book-stats-table > * tr.bold-row-stats > th {
     font-weight: bold;
-    font-size: 120%;
 }
-
-.book-stats-table > * .bold-row-stats > th {
-    font-weight: bold;
+.book-stats-table > * tr > th:nth-child(1) {
+    font-weight: normal;
 }
 
 .book-stats-table > * td {
