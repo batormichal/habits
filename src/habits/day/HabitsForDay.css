@@ -51,9 +51,10 @@
 .habit-day-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     gap:1vh;
     margin-bottom: 2%;
+    margin-left: 10%
 }
 
 .result {
