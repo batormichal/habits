@@ -10,7 +10,7 @@ export default function TableRow(props) {
     return <React.Fragment>
         <tr className={e['pages']>70 ? "bold-row-stats" : undefined}>
             <th>{props.index}</th>
-            <th>{moment(e['date']).format('ddd, D MMMM')}</th>
+            <th>{moment(e['date']).format('D MMMM')}</th>
             <th>{e['pages']}</th>
         </tr>
     </React.Fragment>
