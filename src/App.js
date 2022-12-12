@@ -17,8 +17,8 @@ import {ReadingDataTable} from "./comics/ReadingDataTable";
 import {PeriodReadingStats} from "./books/statistics/PeriodReadingStats";
 import {DefaultTable} from "./activities/table/DefaultTable";
 
-
 function App() {
+    console.log(process.env)
     return (<div className="app">
         <BrowserRouter>
             <Menu/>
