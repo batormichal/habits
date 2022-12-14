@@ -4,22 +4,23 @@ import TableRow from "./TableRow";
 import './ReadDataTable.css'
 import {Link} from "react-router-dom";
 import {bookSyncCheck} from "../local_properties";
+import ComicsTableRow from "./ComicsTableRow";
 
 
-export const ReadDateTable = () => {
+export const ReadDateTable = (props) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        RESTService.getReadingData().then(e => {
+        RESTService.getReadingData(props.category).then(e => {
             setData(e);
             setLoading(false);
         });
-    }, [])
+    }, [props.category])
 
     const resetWithSheetData = () => {
         RESTService.readDataFromSheetToMongo().then(() => {
-            RESTService.getReadingData().then(e => {
+            RESTService.getReadingData(props.category).then(e => {
                 setData(e);
             });
         });
@@ -27,7 +28,7 @@ export const ReadDateTable = () => {
 
     const deleteReadData = (id) => {
         RESTService.deleteReadData(id).then(() => {
-            RESTService.getReadingData().then(e => {
+            RESTService.getReadingData(props.category).then(e => {
                 setData(e);
             });
         });
@@ -42,18 +43,13 @@ export const ReadDateTable = () => {
         <a href={bookSyncCheck} className="button-1">Check sync</a>
         {!loading && <table className="book-table">
             <thead>
-            <tr>
-                <th>Data</th>
-                <th className="title">Tytuł</th>
-                <th>Typ</th>
-                <th>Strony</th>
-                <th>Następna</th>
-                <th>Obliczone</th>
-                <th>Opcje</th>
-            </tr>
+            {props.tr}
             </thead>
             <tbody>
-            {data.map(e => <TableRow key={e['_id'] || e['date']} deleteReadData={e => deleteReadData(e)} e={e}/>)}
+            {props.category === "comics" && data.map(e => <ComicsTableRow key={e['_id'] || e['date']} e={e}/>)}
+            {props.category === "literature" && data.map(e => <TableRow key={e['_id'] || e['date']}
+                                                                        deleteReadData={e => deleteReadData(e)}
+                                                                        e={e}/>)}
             </tbody>
         </table>}
         {loading && <h2>LOADING...</h2>}

@@ -3,7 +3,6 @@ import React from "react";
 import HabitsForDay from "./habits/day/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AddReadDataForm} from "./books/AddReadDataForm";
-import {ReadDateTable} from "./books/ReadDateTable";
 import {Menu} from "./Menu";
 import {ActivitiesMenu} from "./activities/ActivitiesMenu";
 import {ActivitiesForm} from "./activities/ActivitiesForm";
@@ -16,6 +15,7 @@ import HabitsTable from "./habits/table/HabitsTable";
 import {ReadingDataTable} from "./comics/ReadingDataTable";
 import {PeriodReadingStats} from "./books/statistics/PeriodReadingStats";
 import {DefaultTable} from "./activities/table/DefaultTable";
+import {MainReadData} from "./books/MainReadData";
 
 function App() {
     console.log(process.env)
@@ -29,7 +29,7 @@ function App() {
                        exact path="habits/day"/>
                 <Route element={<AddReadDataForm/>}
                        path="books/reading/add"/>
-                <Route element={<ReadDateTable/>}
+                <Route element={<MainReadData/>}
                        path="books/reading/table"/>
                 <Route element={<ActivitiesMenu/>}
                        path="activities"/>

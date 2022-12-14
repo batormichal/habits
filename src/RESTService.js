@@ -43,8 +43,8 @@ export default class RESTService {
         return post(flaskService + 'read-data', data);
     }
 
-    static getReadingData() {
-        return get(flaskService + 'read-data')
+    static getReadingData(category) {
+        return get(flaskService + 'read-data/' + category)
     }
 
     static readDataFromSheetToMongo() {
