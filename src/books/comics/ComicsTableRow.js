@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import './ReadDataTable.css'
+import '../ReadDataTable.css'
 
 
 export default function ComicsTableRow(props) {

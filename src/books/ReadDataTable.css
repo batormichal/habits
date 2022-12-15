@@ -4,6 +4,7 @@ table {
     border-right-style: solid;
     border-color: black;
     border-bottom-style: solid;
+    font-family: "Trebuchet MS", serif;
 }
 
 thead > tr > th {

@@ -29,6 +29,10 @@
     background-color: red;
 }
 
+.button-1.button-selected {
+    background-color: green;
+}
+
 .row {
     padding-bottom: 2vh;
 }

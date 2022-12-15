@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 import HabitsForDay from "./habits/day/HabitsForDay";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AddReadDataForm} from "./books/AddReadDataForm";
+import {AddReadDataForm} from "./books/literature/AddReadDataForm";
 import {Menu} from "./Menu";
 import {ActivitiesMenu} from "./activities/ActivitiesMenu";
 import {ActivitiesForm} from "./activities/ActivitiesForm";
@@ -13,7 +13,7 @@ import Settings from "./settings/Settings";
 import {MoviesDateTable} from "./movies/MoviesDateTable";
 import HabitsTable from "./habits/table/HabitsTable";
 import {ReadingDataTable} from "./comics/ReadingDataTable";
-import {PeriodReadingStats} from "./books/statistics/PeriodReadingStats";
+import {PeriodReadingStats} from "./books/literature/statistics/PeriodReadingStats";
 import {DefaultTable} from "./activities/table/DefaultTable";
 import {MainReadData} from "./books/MainReadData";
 

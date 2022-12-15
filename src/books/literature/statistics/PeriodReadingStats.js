@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import RESTService from "../../RESTService";
+import RESTService from "../../../RESTService";
 import TableRow from "./TableRow";
 import './PeriodReadingStats.css'
 

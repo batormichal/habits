@@ -2,10 +2,10 @@ import React from "react";
 import moment from "moment";
 import {useState} from "react";
 import {AddReadDataForm} from "./AddReadDataForm";
-import './ReadDataTable.css'
+import '../ReadDataTable.css'
 
 
-export default function TableRow(props) {
+export default function LiteratureTableRow(props) {
     const [edit, setEdit] = useState({status: false});
     const e = props.e;
 
@@ -20,11 +20,11 @@ export default function TableRow(props) {
     return <React.Fragment>
         <tr>
             <th>{moment(e['date']).format('ddd, D MMMM')}</th>
-            <td className="bold-row">{e['title']}</td>
+            <td className={e['pages'] > 10 ? "bold-row" : ""}>{e['title']}</td>
             <td>{e['type']}</td>
             <td>{getPages(e['pages'])}</td>
             <td>{getPages(e['next_page'])}</td>
-            <td className="bold-row">{e['title'] && Math.round(e['pages_calculated'])}</td>
+            <td className={e['pages'] > 10 ? "bold-row" : ""}>{e['title'] && Math.round(e['pages_calculated'])}</td>
             <td key={Math.random()}>
                 {e['title'] !== undefined && <React.Fragment>
                     <button className="button-1 button-small" key={Math.random()}
