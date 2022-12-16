@@ -2,7 +2,7 @@ import {ReadDateTable} from "./ReadDateTable";
 import React, {useState} from "react";
 
 export const MainReadData = () => {
-    const [mode, setMode] = useState("literature")
+    const [category, setCategory] = useState("literature")
     const books = <tr>
         <th>Data</th>
         <th className="title">Tytuł</th>
@@ -20,14 +20,14 @@ export const MainReadData = () => {
         <th>Strony</th>
     </tr>
     let tr
-    if(mode === "comics"){
+    if(category === "comics"){
         tr = comics
     }
     else{
         tr = books
     }
     return <React.Fragment>
-        <button className="button-1" onClick={() => setMode("literature")}>Literature</button>
-        <button className="button-1" onClick={() => setMode("comics")}>Komiksy</button>
-        <ReadDateTable category={mode} tr={tr}/></React.Fragment>
+        <button className={category === "literature" ? "button-1 button-selected" : "button-1"} onClick={() => setCategory("literature")}>Literature</button>
+        <button className={category === "comics" ? "button-1 button-selected" : "button-1"} onClick={() => setCategory("comics")}>Komiksy</button>
+        <ReadDateTable category={category} tr={tr}/></React.Fragment>
 }
