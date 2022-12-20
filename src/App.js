@@ -14,7 +14,7 @@ import {MoviesDateTable} from "./movies/MoviesDateTable";
 import HabitsTable from "./habits/table/HabitsTable";
 import {ReadingDataTable} from "./comics/ReadingDataTable";
 import {PeriodReadingStats} from "./books/literature/statistics/PeriodReadingStats";
-import {DefaultTable} from "./activities/table/DefaultTable";
+import {DefaultTable} from "./table/DefaultTable";
 import {MainReadData} from "./books/MainReadData";
 
 function App() {

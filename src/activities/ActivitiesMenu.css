@@ -8,7 +8,7 @@
 .activity-selector > button {
     width: 50vh;
     padding: 1vh;
-    background-color: #00F2BA;
+    background-color: cornflowerblue;
     font-size: 5vh;
     font-weight: bold;
 }
@@ -35,4 +35,8 @@
 .activity-table {
     table-layout: fixed;
     width: 100%;
+}
+
+.activity-selector .btn-chosen {
+    background-color: aliceblue;
 }

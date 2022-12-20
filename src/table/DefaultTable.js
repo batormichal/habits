@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TableRow from "./TableRow";
-import '../../books/ReadDataTable.css'
+import '../books/ReadDataTable.css'
 
 
 export const DefaultTable = (props) => {
