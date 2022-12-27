@@ -12,7 +12,7 @@ export const AddReadDataForm = () => {
     const onSubmit = data => {
         data['category'] = category
         console.log(data);
-        //RESTService.addReadingData(data).then(() => setOk(true))
+        RESTService.addReadingData(data).then(() => setOk(true))
     };
 
     const handleDateChange = (event) => {
@@ -23,7 +23,8 @@ export const AddReadDataForm = () => {
         <button value="literature" className={category === "literature" ? "button-1 button-selected" : "button-1"}
                 onClick={(event) => setCategory(event.target.value)}>Literature
         </button>
-        <button value="comics" className={category === "comics" ? "button-1 button-selected" : "button-1"} onClick={(event) => setCategory(event.target.value)}>Komiksy
+        <button value="comics" className={category === "comics" ? "button-1 button-selected" : "button-1"}
+                onClick={(event) => setCategory(event.target.value)}>Komiksy
         </button>
         <form className="add-book" onSubmit={handleSubmit(onSubmit)}>
             <div className="input-block">
