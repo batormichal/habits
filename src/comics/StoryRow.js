@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 
 
 export default function StoryRow({story, publicationId}) {
-    console.log(story);
     const [edit, setEdit] = useState({status: false});
     const read = (story['read'] === true) ? "TAK" : "NIE";
     return <React.Fragment>

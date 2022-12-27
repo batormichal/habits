@@ -12,6 +12,7 @@ export const ReadDateTable = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         RESTService.getReadingData(props.category).then(e => {
             setData(e);
             setLoading(false);
@@ -46,7 +47,8 @@ export const ReadDateTable = (props) => {
             {props.tr}
             </thead>
             <tbody>
-            {props.category === "comics" && data.map(e => <ComicsTableRow key={e['_id'] || e['date']} e={e}/>)}
+            {props.category === "comics" && data.map(e => <ComicsTableRow key={e['_id'] || e['date']} e={e}
+                                                                          deleteReadData={e => deleteReadData(e)}/>)}
             {props.category === "literature" && data.map(e => <LiteratureTableRow key={e['_id'] || e['date']}
                                                                                   deleteReadData={e => deleteReadData(e)}
                                                                                   e={e}/>)}

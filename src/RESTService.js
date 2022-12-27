@@ -9,6 +9,10 @@ export default class RESTService {
         return get(flaskService + 'habits/data/' + date);
     }
 
+    static getSmallDataForDay(date) {
+        return get(flaskService + 'habits/data/small/' + date);
+    }
+
     static getDataForMultipleDays(startDate, endDate) {
         return get(flaskService + 'habits/many-days/' + startDate + "/" + endDate);
     }
@@ -72,7 +76,7 @@ export default class RESTService {
     }
 
     static getAllComicsPublications(fun) {
-        getAndSet(springService + 'publications', fun);
+        getAndSet(springService + 'series', fun);
     }
 
     static getStoryById(id) {

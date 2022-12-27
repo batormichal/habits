@@ -18,6 +18,7 @@ export const MainReadData = () => {
         <th>Numer</th>
         <th>Info</th>
         <th>Strony</th>
+        <th>Opcje</th>
     </tr>
     let tr
     if(category === "comics"){

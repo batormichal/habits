@@ -14,6 +14,13 @@ export default function ComicsTableRow(props) {
             <td>{e['number']}</td>
             <td>{e['info']}</td>
             <td>{e['pages']}</td>
+            <td key={Math.random()}>
+                {e['title'] !== undefined &&
+                    <button className="button-1 button-red button-small" key={Math.random()}
+                            onClick={() => props.deleteReadData(e._id)}>Delete
+                    </button>
+                }
+            </td>
         </tr>
     </React.Fragment>
 }

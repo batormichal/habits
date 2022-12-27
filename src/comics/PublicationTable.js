@@ -25,7 +25,7 @@ export default function PublicationTable() {
         {!loading && <React.Fragment>
             <div className="comicsHeader"><h2>{publication.seriesName + " - " + publication.title}</h2>
                 <img alt={publication.cover} style={{width: "200px"}}
-                     src={RESTService.getCover(publication.cover)}/></div>
+                     src={publication.inducksCover}/></div>
             <table className="table table-striped">
                 <thead>
                 <tr>

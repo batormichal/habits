@@ -16,9 +16,9 @@ import {ReadingDataTable} from "./comics/ReadingDataTable";
 import {PeriodReadingStats} from "./books/literature/statistics/PeriodReadingStats";
 import {DefaultTable} from "./table/DefaultTable";
 import {MainReadData} from "./books/MainReadData";
+import {ListOfSeries} from "./comics/ListOfSeries";
 
 function App() {
-    console.log(process.env)
     return (<div className="app">
         <BrowserRouter>
             <Menu/>
@@ -35,7 +35,7 @@ function App() {
                        path="activities"/>
                 <Route element={<ActivitiesForm/>}
                        path="activities/form"/>
-                <Route element={<Series/>}
+                <Route element={<ListOfSeries/>}
                        path="comics/table"/>
                 <Route element={<PublicationTable/>}
                        path="comics/publication/:id"/>
@@ -43,6 +43,8 @@ function App() {
                        path="comics/story/:id"/>
                 <Route element={<ReadingDataTable/>}
                        path="comics/reading-list"/>
+                <Route element={<Series/>}
+                       path="comics/series/:name"/>
                 <Route element={<PeriodReadingStats/>} path="books/period"/>
                 <Route element={<Settings/>}
                        path="settings"/>
