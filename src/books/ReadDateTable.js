@@ -19,8 +19,8 @@ export const ReadDateTable = (props) => {
         });
     }, [props.category])
 
-    const resetWithSheetData = () => {
-        RESTService.readDataFromSheetToMongo().then(() => {
+    const resetWithSheetData = (category) => {
+        RESTService.readDataFromSheetToMongo(category).then(() => {
             RESTService.getReadingData(props.category).then(e => {
                 setData(e);
             });
@@ -39,7 +39,7 @@ export const ReadDateTable = (props) => {
     return <div>
         <Link className="button-1" to="/books/reading/add">Dodaj</Link>
         <button className="button-1"
-                onClick={resetWithSheetData}>Pull data
+                onClick={()=> resetWithSheetData(props.category)}>Pull data
         </button>
         <a href={bookSyncCheck} className="button-1">Check sync</a>
         {!loading && <table className="book-table">

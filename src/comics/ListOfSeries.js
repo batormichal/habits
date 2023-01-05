@@ -9,7 +9,7 @@ export const ListOfSeries = () => {
     const [series, setSeries] = useState([]);
     const {register, handleSubmit} = useForm();
 
-    init(useEffect, RESTService.getAllComicsPublications, setSeries());
+    init(useEffect, RESTService.getAllComicsPublications, setSeries);
 
     const onSubmit = data => RESTService.addComicsByUrl(data['title'])
 
@@ -21,7 +21,7 @@ export const ListOfSeries = () => {
         <div className="publication-list">{series.map(e => <Link
             className="publication-link"
             to={"/comics/series/" + e['name']}>
-            {e}
+            {e['name']}
         </Link>)}</div>
     </React.Fragment>
 

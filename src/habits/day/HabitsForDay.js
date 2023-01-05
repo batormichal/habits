@@ -8,7 +8,7 @@ export default class HabitsForDay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [], date: new Date().toISOString().split('T')[0], result: 0
+            data: [], date: new Date().toISOString().split('T')[0], result: 0, category: 'normal'
         }
     }
 
@@ -67,18 +67,14 @@ export default class HabitsForDay extends React.Component {
         }
     }
 
-    updateData = () => {
-        console.log(this.props.type);
-        if (this.props.type === "small") {
-            console.log(("Małe"))
-        } else {
-            RESTService.getDataForDay(this.state.date).then(e => {
-                this.setState({data: e});
-                this.calculateResult();
-
-            })
-        }
-
+    updateData = (category) => {
+        category === "small" ? RESTService.getSmallDataForDay(this.state.date).then(e => {
+            this.setState({data: e});
+            this.calculateResult();
+        }) : RESTService.getDataForDay(this.state.date).then(e => {
+            this.setState({data: e});
+            this.calculateResult();
+        })
     }
 
     calculateResult = () => {
@@ -87,26 +83,48 @@ export default class HabitsForDay extends React.Component {
         })
     }
 
+    updateDataCategory = (category) => {
+        this.updateData(category)
+    }
+
     render() {
         return <div>
             <div>
                 <div className="habit-day-header">
-                    <button className="button-1"
-                            onClick={() => this.dayButton(-1)}>Previous
-                    </button>
-                    <button className="button-1"
-                            onClick={() => this.dayButton(1)}>Next
-                    </button>
+                    <div>
+                        <button className={this.state.category === "normal" ? "button-1 button-selected" : "button-1"}
+                                onClick={() => {
+                                    this.setState({category: "normal"})
+                                    this.updateDataCategory("normal");
+                                }}>Normal
+                        </button>
+                        <button className={this.state.category === "small" ? "button-1 button-selected" : "button-1"}
+                                onClick={() => {
+                                    this.setState({category: "small"})
+                                    this.updateDataCategory("small");
+                                }}>Small
+                        </button>
+                    </div>
+                    <div>
+                        <button className="button-1"
+                                onClick={() => this.dayButton(-1)}>Previous
+                        </button>
+                        <button className="button-1"
+                                onClick={() => this.dayButton(1)}>Next
+                        </button>
+                    </div>
                     <p>Date:</p>
                     <input type="date"
                            value={this.state.date}
                            onChange={this.handleDateChange}/>
-                    <button className="button-1"
-                            onClick={this.postgresToSheet}>Push data
-                    </button>
-                    <button className="button-1"
-                            onClick={this.sheetToPostgres}>Pull data
-                    </button>
+                    <div>
+                        <button className="button-1"
+                                onClick={this.postgresToSheet}>Push data
+                        </button>
+                        <button className="button-1"
+                                onClick={this.sheetToPostgres}>Pull data
+                        </button>
+                    </div>
                     <span className="result"><span>Result: </span><span>{this.state.result}</span></span>
                 </div>
                 {this.slice(this.state.data).map(slice => <div

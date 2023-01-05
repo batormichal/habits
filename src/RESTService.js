@@ -10,7 +10,7 @@ export default class RESTService {
     }
 
     static getSmallDataForDay(date) {
-        return get(flaskService + 'habits/data/small/' + date);
+        return get(flaskService + 'habits/data/temporary/' + date);
     }
 
     static getDataForMultipleDays(startDate, endDate) {
@@ -51,8 +51,8 @@ export default class RESTService {
         return get(flaskService + 'read-data/' + category)
     }
 
-    static readDataFromSheetToMongo() {
-        return axios.put(flaskService + 'books/sheet-to-mongo').then((response) => {
+    static readDataFromSheetToMongo(category) {
+        return axios.put(flaskService + 'books/sheet-to-mongo', {"category": category}).then((response) => {
             console.log(response)
             return response.data;
         });
@@ -77,6 +77,11 @@ export default class RESTService {
 
     static getAllComicsPublications(fun) {
         getAndSet(springService + 'series', fun);
+    }
+
+    static getAllComicsPublicationsByName(name) {
+        console.log(name+"jj")
+        return get(springService + 'publications/name/' + name);
     }
 
     static getStoryById(id) {
