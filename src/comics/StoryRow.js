@@ -3,7 +3,7 @@ import {AddComicsReadData} from "./AddComicsReadData";
 import {Link} from "react-router-dom";
 
 
-export default function StoryRow({story, publicationId}) {
+export default function StoryRow({story, publicationId, inducksUrl}) {
     const [edit, setEdit] = useState({status: false});
     const read = (story['read'] === true) ? "TAK" : "NIE";
     return <React.Fragment>
@@ -24,7 +24,8 @@ export default function StoryRow({story, publicationId}) {
         </tr>
         {edit.status && <tr>
             <AddComicsReadData comics={story}
-                               publicationId={publicationId}/>
+                               publicationId={publicationId}
+                               inducksUrl={inducksUrl}/>
 
         </tr>}
     </React.Fragment>

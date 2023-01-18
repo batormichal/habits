@@ -12,6 +12,11 @@
 .book-stats-table > * tr.bold-row-stats > th {
     font-weight: bold;
 }
+
+tbody tr.recent-row-stats{
+    background-color: #4ca331;
+}
+
 .book-stats-table > * tr > th:nth-child(1) {
     font-weight: normal;
 }

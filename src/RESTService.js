@@ -80,8 +80,21 @@ export default class RESTService {
     }
 
     static getAllComicsPublicationsByName(name) {
-        console.log(name+"jj")
         return get(springService + 'publications/name/' + name);
+    }
+
+    static setPublicationOwned(id, owned) {
+        return axios.put(springService + 'publication/set-owned/' + id + "/" + owned).then((response) => {
+            console.log(response)
+            return response.data;
+        });
+    }
+
+    static deletePublication(id) {
+        return axios.delete(springService + 'publication/' + id).then((response) => {
+            console.log(response)
+            return response.data;
+        });
     }
 
     static getStoryById(id) {

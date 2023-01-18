@@ -19,7 +19,7 @@ export const ListOfSeries = () => {
             <button type='submit' className="button-1">Dodaj</button>
         </form>
         <div className="publication-list">{series.map(e => <Link
-            className="publication-link"
+            className="publication-link series-link"
             to={"/comics/series/" + e['name']}>
             {e['name']}
         </Link>)}</div>

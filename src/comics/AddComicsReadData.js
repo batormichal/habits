@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 
 export const AddComicsReadData = (props) => {
     const comics = props.comics;
+    console.log(props);
     const [status, setStatus] = useState({success: ''});
     const [date, setDate] = useState(new Date());
 
@@ -15,6 +16,7 @@ export const AddComicsReadData = (props) => {
             complete: true,
             date: adjusted_date.toISOString().split('T')[0],
             publicationId: props.publicationId,
+            publicationUrl: props.inducksUrl,
             id: null,
             completed: true,
             printId: comics.id

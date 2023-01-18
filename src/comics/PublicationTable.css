@@ -11,8 +11,11 @@
     text-decoration: none;
     line-height: 1.2;
     font-weight: bold;
-    color: #460A1F;
     margin-top: 1vh
+}
+
+.series-link {
+    color: #460A1F;
 }
 
 input {

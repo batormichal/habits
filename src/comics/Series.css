@@ -1,0 +1,15 @@
+.not-owned {
+    color: lightgray;
+}
+
+.not-read {
+    color: #EA4C89;
+}
+
+.partially-read {
+    color: darkblue;
+}
+
+.whole-read {
+    color: green;
+}
