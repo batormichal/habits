@@ -1,9 +1,10 @@
 import axios from "axios";
 import {get, getAndSet, post} from "./REST";
-import {springService, getFileService} from './local_properties.js'
+import {getFileService} from './local_properties.js'
 
+const springService = process.env.REACT_APP_SPRING_SERVICE;
 const flaskService = process.env.REACT_APP_FLASK_SERVICE;
-console.log(flaskService)
+
 export default class RESTService {
     static getDataForDay(date) {
         return get(flaskService + 'habits/data/' + date);

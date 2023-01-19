@@ -41,13 +41,14 @@ export default function PublicationTable() {
         {!loading && <React.Fragment>
             <div className="comicsHeader">
                 <h2 className={getClassOfTitle(publication)}>{publication.seriesName + ' ' + publication.number + " - " + publication.title}</h2>
-                <p>Przeczytane {publication.read}</p>
+                <h2>Przeczytane {publication.read}%</h2>
                 {/*<img alt={publication.cover} style={{width: "200px"}}*/}
                 {/*     src={RESTService.getCover(publication.coverUrl)}/>*/}
             </div>
             <div>
                 <button className="button-1"
-                        onClick={() => RESTService.setPublicationOwned(publication.id, publication.owned !== true).then(() => setSuccess(true))}>Owned
+                        onClick={() => RESTService.setPublicationOwned(publication.id, publication.owned !== true).then(() => setSuccess(true))}>
+                    {publication.owned ? "Set not owned" : "Set owned"}
                 </button>
                 <button className="button-1"
                         onClick={() => RESTService.deletePublication(publication.id).then(() => setSuccess(true))}>Delete

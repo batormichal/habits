@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import RESTService from "../RESTService";
 import TableRow from "./TableRow";
 import {Link} from "react-router-dom";
-import {moviesSyncCheck} from "../local_properties";
 
+const moviesSyncCheck = process.env.REACT_APP_MOVIES_SYNC
 
 export const MoviesDateTable = () => {
     const [data, setData] = useState([]);
-
 
     useEffect(() => {
         RESTService.getMoviesData().then(e => {
