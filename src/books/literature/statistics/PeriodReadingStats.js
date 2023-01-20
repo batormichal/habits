@@ -16,8 +16,8 @@ export const PeriodReadingStats = () => {
         });
     }, [])
 
-    return <div>
-        {!loading && <table className="book-stats-table">
+    return loading ? <h2>LOADING...</h2> : <div className="tables-container">
+        <table className="book-stats-table">
             <thead>
             <tr>
                 <th>Index</th>
@@ -28,8 +28,18 @@ export const PeriodReadingStats = () => {
             <tbody>
             {data['weeks'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}/>)}
             </tbody>
-        </table>}
-        {loading && <h2>LOADING...</h2>}
-        <LineChart/>
+        </table>
+        <table className="book-stats-table">
+            <thead>
+            <tr>
+                <th>Index</th>
+                <th className="date">Koniec miesiąca</th>
+                <th className="title">Stron</th>
+            </tr>
+            </thead>
+            <tbody>
+            {data['months'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}/>)}
+            </tbody>
+        </table>
     </div>
 }

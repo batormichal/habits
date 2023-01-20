@@ -2,18 +2,20 @@
     width: 30%;
 }
 
-.book-stats-table > tbody > tr.bold-row-stats > th:nth-child(3){
+.book-stats-table > tbody > tr.bold-row-stats > th:nth-child(3) {
     font-weight: bold;
     font-size: 110%;
 }
+
 .book-stats-table > * tr > th {
     font-weight: normal;
 }
+
 .book-stats-table > * tr.bold-row-stats > th {
     font-weight: bold;
 }
 
-tbody tr.recent-row-stats{
+tbody tr.recent-row-stats {
     background-color: #4ca331;
 }
 
@@ -37,4 +39,9 @@ tbody tr.recent-row-stats{
 
 .book-stats-table > td:nth-child(2) {
     width: 10%;
+}
+
+.tables-container {
+    display: flex;
+    justify-content: space-around;
 }

@@ -5,18 +5,18 @@ import {useParams} from "react-router";
 
 export default function StoryPage() {
     const {id} = useParams();
-
-    const [story, setStory] = useState({readingData:[]});
+    const [loading, setLoading] = useState(true)
+    const [story, setStory] = useState({readingData: []});
     useEffect(() => {
         RESTService.getStoryById(id).then(e => {
-            if (e.readingData == null) e.readingData = []
             setStory(e);
-            console.log(e);
+            setLoading(false)
         });
     }, [id])
-    return <React.Fragment>
+    return loading ? <h2>LOADING</h2> : <React.Fragment>
         <p>Tytuł: {story.title}</p>
         <p>Kod: {story.code}</p>
         <p>Czytane: {story.readingData.length}</p>
     </React.Fragment>
+
 }

@@ -10,9 +10,7 @@ export const Series = () => {
     const [publications, setPublications] = useState([]);
 
     useEffect(() => {
-        console.log(name);
         RESTService.getAllComicsPublicationsByName(name).then(e => {
-            console.log(e);
             e = e.sort((a,b) => parseInt(a['number']) > parseInt(b["number"]))
             setPublications(e);
         });
@@ -34,8 +32,8 @@ export const Series = () => {
     }
 
     return <React.Fragment>
-        <div className="publication-list">{publications.map(e => <React.Fragment><Link
-            key={e['id']}
+        <div className="publication-list">{publications.map(e => <React.Fragment key={e['id']}><Link
+
             className={"publication-link " + getClassOfTitle(e)}
             to={"/comics/publication/" + e['id']}>
             {e['seriesName']} {e['number']} - {e['title']} <span>Przeczytane: {e['read']}%</span>

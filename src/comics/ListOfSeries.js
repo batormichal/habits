@@ -18,9 +18,10 @@ export const ListOfSeries = () => {
         {success && <p>Success!</p>}
         <form className="add-form" onSubmit={handleSubmit(onSubmit)}><label>Url: </label>
             <input {...register('title')} id="url"/>
-            <button onClick='submit' className="button-1">Dodaj</button>
+            <button type='submit' className="button-1">Dodaj</button>
         </form>
         <div className="publication-list">{series.map(e => <Link
+            key={e['name']}
             className="publication-link series-link"
             to={"/comics/series/" + e['name']}>
             {e['name']}

@@ -26,7 +26,7 @@ export const ReadingDataTable = () => {
             </tr>
             </thead>
             <tbody>
-            {data.map(e => <TableRow key={e['_id'] || e['date']} e={e}/>)}
+            {data.map(e => <TableRow key={e['_id']} e={e}/>)}
             </tbody>
         </table>}
         {loading && <h2>LOADING...</h2>}
