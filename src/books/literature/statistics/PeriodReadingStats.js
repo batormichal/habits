@@ -17,7 +17,7 @@ export const PeriodReadingStats = () => {
     }, [])
 
     return loading ? <h2>LOADING...</h2> : <div className="tables-container">
-        <table className="book-stats-table">
+        <table className="book-table book-stats-table">
             <thead>
             <tr>
                 <th>Index</th>
@@ -26,10 +26,11 @@ export const PeriodReadingStats = () => {
             </tr>
             </thead>
             <tbody>
-            {data['weeks'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}/>)}
+            {data['weeks'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}
+                                                       format="D MMMM"/>)}
             </tbody>
         </table>
-        <table className="book-stats-table">
+        <table className="book-table book-stats-table">
             <thead>
             <tr>
                 <th>Index</th>
@@ -38,7 +39,8 @@ export const PeriodReadingStats = () => {
             </tr>
             </thead>
             <tbody>
-            {data['months'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}/>)}
+            {data['months'].map((e, index) => <TableRow key={e['_id'] || e['date']} e={e} index={index + 1}
+                                                        format={"MMMM"}/>)}
             </tbody>
         </table>
     </div>

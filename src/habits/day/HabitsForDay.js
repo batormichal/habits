@@ -8,7 +8,7 @@ export default class HabitsForDay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [], date: new Date().toISOString().split('T')[0], result: 0, category: 'normal'
+            data: [], date: new Date().toISOString().split('T')[0], result: 0, category: 'normal', loading: true
         }
     }
 
@@ -52,6 +52,7 @@ export default class HabitsForDay extends React.Component {
     }
 
     dayButton = (value) => {
+        this.setState({loading: true})
         console.log("Change date: " + value);
         let date_o = new Date(this.state.date);
         date_o.setDate(date_o.getDate() + value);
@@ -63,17 +64,21 @@ export default class HabitsForDay extends React.Component {
             RESTService.getDataForDay(new_date).then(e => {
                 this.setState({data: e});
                 this.calculateResult();
+                this.setState({loading: false})
             })
         }
     }
 
     updateData = (category) => {
+        this.setState({loading: true})
         category === "small" ? RESTService.getSmallDataForDay(this.state.date).then(e => {
             this.setState({data: e});
             this.calculateResult();
+            this.setState({loading: false})
         }) : RESTService.getDataForDay(this.state.date).then(e => {
             this.setState({data: e});
             this.calculateResult();
+            this.setState({loading: false})
         })
     }
 
@@ -89,20 +94,23 @@ export default class HabitsForDay extends React.Component {
 
     render() {
         return <div>
+            {this.state.loading && <h2>LOADING</h2>}
             <div>
                 <div className="habit-day-header">
                     <div>
-                        <button className={this.state.category === "normal" ? "button-1 button-selected" : "button-1"}
-                                onClick={() => {
-                                    this.setState({category: "normal"})
-                                    this.updateDataCategory("normal");
-                                }}>Normal
+                        <button
+                            className={this.state.category === "normal" ? "button-1 button-selected" : "button-1"}
+                            onClick={() => {
+                                this.setState({category: "normal"})
+                                this.updateDataCategory("normal");
+                            }}>Normal
                         </button>
-                        <button className={this.state.category === "small" ? "button-1 button-selected" : "button-1"}
-                                onClick={() => {
-                                    this.setState({category: "small"})
-                                    this.updateDataCategory("small");
-                                }}>Small
+                        <button
+                            className={this.state.category === "small" ? "button-1 button-selected" : "button-1"}
+                            onClick={() => {
+                                this.setState({category: "small"})
+                                this.updateDataCategory("small");
+                            }}>Small
                         </button>
                     </div>
                     <div>

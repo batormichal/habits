@@ -1,35 +1,32 @@
-table {
+.book-table {
     width: 100%;
     border-spacing: 0;
-    border-right-style: solid;
     border-color: black;
-    border-bottom-style: solid;
     font-family: "Trebuchet MS", serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 thead > tr > th {
     border-top-style: solid;
     border-bottom-style: solid;
-    border-color: black;
 }
 
-th {
-    border-left-style: solid;
-    border-color: black;
+.book-table > th {
+    font-weight: normal;
 }
 
 .book-table tr {
     height: 3vh;
 }
 
-tbody > tr:nth-child(odd) {
-    background-color: antiquewhite;
+.book-table > tbody > tr:nth-child(odd) {
+    background-color: white;
 }
 
-td {
-    border-color: black;
+.book-table > td {
     border-left-style: solid;
     text-align: center;
+    border-color: whitesmoke;
 }
 
 td:nth-child(2) {
@@ -76,4 +73,12 @@ td:nth-child(2) {
 .form-button {
     width: 40%;
     font-size: larger;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
