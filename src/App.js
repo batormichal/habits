@@ -17,6 +17,10 @@ import {PeriodReadingStats} from "./books/literature/statistics/PeriodReadingSta
 import {DefaultTable} from "./table/DefaultTable";
 import {MainReadData} from "./books/MainReadData";
 import {ListOfSeries} from "./comics/ListOfSeries";
+import Sample from "./books/Sample";
+import {ReadDateTable} from "./books/ReadDateTable";
+import ReadDataTable from "./books/ReadDataTable";
+import {MainReadTable} from "./books/MainReadTable";
 
 function App() {
     return (<div className="app">
@@ -54,6 +58,7 @@ function App() {
                        path="small-habits/day"/>
                 <Route element={<HabitsTable/>} path='habits/table'/>
                 <Route element={<DefaultTable/>} path='table'/>
+                <Route element={<MainReadTable/>} path='table/example'/>
             </Routes></div>
         </BrowserRouter>
     </div>);

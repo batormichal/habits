@@ -13,5 +13,6 @@ export const Menu = () => <nav className="navigation-bar">
     <Link to="/activities"><span>Aktywność</span></Link>
     <Link to="/comics/table"><span>Komiksy</span></Link>
     <Link to="/comics/reading-list"><span>Czytane komiksy</span></Link>
+    <Link to="/table/example"><span>Tabela</span></Link>
 </nav>
 
