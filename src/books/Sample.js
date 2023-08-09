@@ -1,5 +1,5 @@
 import Table from './Table';
-
+import React from "react";
 const Sample = () => {
     const data = [
         {
